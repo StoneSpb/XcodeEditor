@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name     = 'XcodeEditor'
-  s.version  = '1.6.2'
+  s.version  = '2.0.0'
   s.license  = 'Apache2.0'
   s.summary  = 'An API for manipulating Xcode Projects using objective-C.'
-  s.homepage = 'https://github.com/jasperblues/XcodeEditor'
+  s.homepage = 'https://github.com/StoneSpb/XcodeEditor'
   s.author   = { 'Jasper Blues' => 'jasper@appsquick.ly' }
-  s.source   = { :git => 'https://github.com/jasperblues/XcodeEditor.git', :tag => 'v1.6.2' }
+  s.source   = { :git => 'https://github.com/StoneSpb/XcodeEditor.git', :tag => 'v2.0.0' }
   s.platform = :osx
   s.source_files = 'Source/*.{h,m}', 'Source/Utils/*.{h,m}'
   s.requires_arc = true
