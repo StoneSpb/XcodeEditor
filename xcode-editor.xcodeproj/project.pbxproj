@@ -225,18 +225,16 @@
 			isa = PBXGroup;
 			children = (
 				6BCED6E41A4A61DC0005596F /* Supporting Files */,
-				BA79864A6A2E695EBF74FDC1 /* InfoPlist.strings */,
-				BA7989499B6F59EEC2E1AA41 /* XCGroupTests.m */,
-				BA79801CE5E6F16CB704E34E /* Utils */,
-				BA798974A01772350D7C81BD /* XCTargetTests.m */,
-				BA79858C0B5035B3EB71E67C /* Tests-Info.plist */,
-				BA798D6F34B9A560E3D689B3 /* XcodeFileReferenceTypeTests.m */,
-				BA7983A401A60AA073A26789 /* XCSubProjectDefinitionTests.m */,
 				BA79834C0D69083DBB47F493 /* Resources */,
-				BA798CFD524E5A3CF155C816 /* XCProjectTests.m */,
-				BA7984685319A7BB1B37DBE9 /* XCClassDefinitionTests.m */,
+				BA79801CE5E6F16CB704E34E /* Utils */,
 				BA798CAEB3570762F71E2AF6 /* Tests-Prefix.pch */,
+				BA7984685319A7BB1B37DBE9 /* XCClassDefinitionTests.m */,
+				BA7989499B6F59EEC2E1AA41 /* XCGroupTests.m */,
 				BA798BD3F30B4E39066F8108 /* XCKeyBuilderTests.m */,
+				BA798CFD524E5A3CF155C816 /* XCProjectTests.m */,
+				BA7983A401A60AA073A26789 /* XCSubProjectDefinitionTests.m */,
+				BA798974A01772350D7C81BD /* XCTargetTests.m */,
+				BA798D6F34B9A560E3D689B3 /* XcodeFileReferenceTypeTests.m */,
 			);
 			path = XcodeEditorTests;
 			sourceTree = "<group>";
@@ -244,6 +242,7 @@
 		6BCED6E41A4A61DC0005596F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BA79858C0B5035B3EB71E67C /* Tests-Info.plist */,
 				6BCED6E51A4A61DC0005596F /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -252,40 +251,40 @@
 		6BE4B285147E6B610059E44D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BA798CF27DA49D73EBE0FCB7 /* XcodeSourceFileType.h */,
-				BA7989F085BDB69CB462D203 /* XCGroup.m */,
-				BA798287F70884A45C9F3721 /* XCAbstractDefinition.m */,
-				BA798ABC7CC2DB8B6994774C /* Utils */,
-				BA798A848F553CE428B7CC74 /* XCSourceFile.m */,
-				BA7983A0D40F7D264D8E6DF3 /* XCClassDefinition.h */,
-				BA798B392E07F43F5E0E77FC /* XCSourceFile.h */,
 				BA79829560E06C6EF29DAB81 /* Resources */,
-				BA798C11E473C251F07B0DAA /* XcodeMemberType.h */,
-				BA798473A7694F9383712D07 /* XCSourceFileDefinition.m */,
-				BA7982A4051493BD524C3BBD /* XCXibDefinition.m */,
-				BA7982A01773D8163E643FAA /* XcodeSourceFileType.m */,
-				BA798516EBADF7760937A8D6 /* XCSubProjectDefinition.h */,
-				BA798ABFC33DC1AE014D76D6 /* XCTarget.m */,
-				BA7988B8FA1C50DE6B1B54D2 /* XCProject.h */,
-				BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */,
-				BA7987AE440FBAAC032785B1 /* XCSubProjectDefinition.m */,
-				BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */,
-				BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */,
-				BA79840E5B88656BAAE1D8B5 /* XcodeGroupMember.h */,
-				BA798A9F12459363332BFD04 /* XCClassDefinition.m */,
+				BA798ABC7CC2DB8B6994774C /* Utils */,
 				BA79837129D1D730443959A2 /* XCAbstractDefinition.h */,
-				BA798E32B62ACEF1B995F0D3 /* XCFileOperationQueue.m */,
-				BA79888A08A5739C728633D2 /* XcodeEditor.h */,
-				BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */,
-				BA7983FEC190BC062691EA39 /* XCGroup.h */,
-				BA798C57D9B8610BFECB9528 /* XCProject+SubProject.m */,
-				BA7982BE32BDDBBC9DA2FDC8 /* XCTarget.h */,
-				BA798C2F90A12BFEE77EFA5D /* XCSourceFileDefinition.h */,
-				BA798C3E8F2CD550594E7231 /* XcodeMemberType.m */,
-				BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */,
-				BA7989AC9710D456572783C7 /* XCProject.m */,
-				BA798D221F1008AE859B76B8 /* XCXibDefinition.h */,
+				BA798287F70884A45C9F3721 /* XCAbstractDefinition.m */,
+				BA7983A0D40F7D264D8E6DF3 /* XCClassDefinition.h */,
+				BA798A9F12459363332BFD04 /* XCClassDefinition.m */,
 				BA798FDE9BAA7D87499853ED /* XCFileOperationQueue.h */,
+				BA798E32B62ACEF1B995F0D3 /* XCFileOperationQueue.m */,
+				BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */,
+				BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */,
+				BA7983FEC190BC062691EA39 /* XCGroup.h */,
+				BA7989F085BDB69CB462D203 /* XCGroup.m */,
+				BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */,
+				BA798C57D9B8610BFECB9528 /* XCProject+SubProject.m */,
+				BA7988B8FA1C50DE6B1B54D2 /* XCProject.h */,
+				BA7989AC9710D456572783C7 /* XCProject.m */,
+				BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */,
+				BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */,
+				BA798B392E07F43F5E0E77FC /* XCSourceFile.h */,
+				BA798A848F553CE428B7CC74 /* XCSourceFile.m */,
+				BA798C2F90A12BFEE77EFA5D /* XCSourceFileDefinition.h */,
+				BA798473A7694F9383712D07 /* XCSourceFileDefinition.m */,
+				BA798516EBADF7760937A8D6 /* XCSubProjectDefinition.h */,
+				BA7987AE440FBAAC032785B1 /* XCSubProjectDefinition.m */,
+				BA7982BE32BDDBBC9DA2FDC8 /* XCTarget.h */,
+				BA798ABFC33DC1AE014D76D6 /* XCTarget.m */,
+				BA798D221F1008AE859B76B8 /* XCXibDefinition.h */,
+				BA7982A4051493BD524C3BBD /* XCXibDefinition.m */,
+				BA79888A08A5739C728633D2 /* XcodeEditor.h */,
+				BA79840E5B88656BAAE1D8B5 /* XcodeGroupMember.h */,
+				BA798C11E473C251F07B0DAA /* XcodeMemberType.h */,
+				BA798C3E8F2CD550594E7231 /* XcodeMemberType.m */,
+				BA798CF27DA49D73EBE0FCB7 /* XcodeSourceFileType.h */,
+				BA7982A01773D8163E643FAA /* XcodeSourceFileType.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -312,6 +311,7 @@
 		BA79834C0D69083DBB47F493 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA79864A6A2E695EBF74FDC1 /* InfoPlist.strings */,
 				BA79848C44BAD3669D8B787E /* Person.impl */,
 				BA798924D39B66695026C637 /* goat-funny.png */,
 				BA798943BA7D1C740F0A098F /* HelloBoxy.zip */,
@@ -329,8 +329,8 @@
 		BA798ABC7CC2DB8B6994774C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */,
 				BA798909AC4D1FCE033E64C5 /* XCKeyBuilder.h */,
+				BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -544,6 +544,7 @@
 				BA7985E1B4262B71CC38472A /* en */,
 			);
 			name = InfoPlist.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
