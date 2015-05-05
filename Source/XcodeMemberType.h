@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
+#import <Foundation/Foundation.h>
 
 typedef enum
 {
@@ -50,5 +50,3 @@ typedef enum
 - (BOOL)xce_hasSourcesOrFrameworksBuildPhaseType;
 
 @end
-
-

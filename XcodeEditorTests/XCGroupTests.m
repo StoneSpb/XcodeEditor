@@ -54,7 +54,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
 - (void)setUp
 {
-    project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+    project = [XCProject projectWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
     group = [project groupWithPathFromRoot:@"Source/Main"];
     XCTAssertNotNil(group);
 }
@@ -286,7 +286,9 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 - (void)test_allows_adding_a_xcodeproj_file
 {
 
-    XCSubProjectDefinition* projectDefinition = [XCSubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:project];
+    XCSubProjectDefinition* projectDefinition = [XCSubProjectDefinition subProjectDefinitionWithName:@"HelloBoxy"
+                                                                                                path:@"/tmp/HelloBoxy"
+                                                                                       parentProject:project];
 
     [group addSubProject:projectDefinition];
     [project save];
@@ -297,7 +299,9 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCSubProjectDefinition
-        * xcodeprojDefinition = [XCSubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj" parentProject:project];
+    * xcodeprojDefinition = [XCSubProjectDefinition subProjectDefinitionWithName:@"ArchiveProj"
+                                                                            path:@"/tmp/ArchiveProj"
+                                                                   parentProject:project];
 
     [group addSubProject:xcodeprojDefinition toTargets:[project targets]];
     [project save];
@@ -353,7 +357,9 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCSourceFileDefinition* header =
-        [[XCSourceFileDefinition alloc] initWithName:@"SomeHeader.h" text:@"@protocol Foobar<NSObject> @end" type:SourceCodeHeader];
+        [XCSourceFileDefinition sourceDefinitionWithName:@"SomeHeader.h"
+                                                    text:@"@protocol Foobar<NSObject> @end"
+                                                    type:SourceCodeHeader];
     [group addSourceFile:header];
     [project save];
 
@@ -362,8 +368,10 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 - (void)test_allows_adding_an_image_file
 {
 
-    XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
-        initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:@"/tmp/goat-funny.png"] type:ImageResourcePNG];
+    XCSourceFileDefinition* sourceFileDefinition =
+        [XCSourceFileDefinition sourceDefinitionWithName:@"MyImageFile.png"
+                                                    data:[NSData dataWithContentsOfFile:@"/tmp/goat-funny.png"]
+                                                    type:ImageResourcePNG];
     [group addSourceFile:sourceFileDefinition];
     [project save];
 

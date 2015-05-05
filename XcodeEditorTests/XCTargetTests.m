@@ -26,7 +26,7 @@
 
 - (void)setUp
 {
-    _project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+    _project = [XCProject projectWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
     NSLog(@"Targets: %@", [_project targets]);
 }
 
@@ -46,7 +46,7 @@
 
 - (void)test_allows_setting_build_configurations
 {
-    XCProject* project = [[XCProject alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+    XCProject* project = [XCProject projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCProjectBuildConfig * configuration = [target configurationWithName:@"Debug"];
@@ -74,7 +74,7 @@
 
 - (void)test_allows_duplicating_a_target
 {
-    XCProject* project = [[XCProject alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+    XCProject* project = [XCProject projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCTarget* duplicated = [target duplicateWithTargetName:@"DuplicatedTarget" productName:@"NewProduct"];

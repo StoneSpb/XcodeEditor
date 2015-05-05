@@ -39,22 +39,22 @@ static NSDictionary* DictionaryWithProjectNodeTypesAsStrings() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _projectNodeTypesAsStrings = @{
-            kPBXNilType :              @(PBXNilType),
-            kPBXBuildFile :            @(PBXBuildFileType),
-            kPBXContainerItemProxy :   @(PBXContainerItemProxyType),
-            kPBXCopyFilesBuildPhase :  @(PBXCopyFilesBuildPhaseType),
+            kPBXNilType              : @(PBXNilType),
+            kPBXBuildFile            : @(PBXBuildFileType),
+            kPBXContainerItemProxy   : @(PBXContainerItemProxyType),
+            kPBXCopyFilesBuildPhase  : @(PBXCopyFilesBuildPhaseType),
             kPBXFileReference        : @(PBXFileReferenceType),
             kPBXFrameworksBuildPhase : @(PBXFrameworksBuildPhaseType),
-            kPBXGroup :                @(PBXGroupType),
-            kPBXNativeTarget :         @(PBXNativeTargetType),
-            kPBXProject :              @(PBXProjectType),
-            kPBXReferenceProxy :       @(PBXReferenceProxyType),
-            kPBXResourcesBuildPhase :  @(PBXResourcesBuildPhaseType),
-            kPBXSourcesBuildPhase :    @(PBXSourcesBuildPhaseType),
-            kPBXTargetDependency :     @(PBXTargetDependencyType),
-            kPBXVariantGroup :         @(PBXVariantGroupType),
-            kXCBuildConfiguration :    @(XCBuildConfigurationType),
-            kXCConfigurationList :     @(XCConfigurationListType),
+            kPBXGroup                : @(PBXGroupType),
+            kPBXNativeTarget         : @(PBXNativeTargetType),
+            kPBXProject              : @(PBXProjectType),
+            kPBXReferenceProxy       : @(PBXReferenceProxyType),
+            kPBXResourcesBuildPhase  : @(PBXResourcesBuildPhaseType),
+            kPBXSourcesBuildPhase    : @(PBXSourcesBuildPhaseType),
+            kPBXTargetDependency     : @(PBXTargetDependencyType),
+            kPBXVariantGroup         : @(PBXVariantGroupType),
+            kXCBuildConfiguration    : @(XCBuildConfigurationType),
+            kXCConfigurationList     : @(XCConfigurationListType),
         };
     });
     return _projectNodeTypesAsStrings;

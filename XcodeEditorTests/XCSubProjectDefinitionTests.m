@@ -25,7 +25,7 @@
 
 - (void)setUp
 {
-    _project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+    _project = [XCProject projectWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
 }
 
 #pragma mark - object creation
@@ -34,7 +34,9 @@
 {
 
     XCSubProjectDefinition
-        * subProjectDefinition = [[XCSubProjectDefinition alloc] initWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:_project];
+        * subProjectDefinition = [XCSubProjectDefinition subProjectDefinitionWithName:@"HelloBoxy"
+                                                                                 path:@"/tmp/HelloBoxy"
+                                                                        parentProject:_project];
 
     XCTAssertNotNil(subProjectDefinition);
     XCTAssertEqualObjects(subProjectDefinition.projectFileName, @"HelloBoxy.xcodeproj");
