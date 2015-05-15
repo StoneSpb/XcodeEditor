@@ -20,12 +20,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (instancetype)sourceDefinitionWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type
++ (instancetype)sourceDefinitionWithName:(NSString*)name text:(NSString*)text type:(SXCXcodeFileType)type
 {
     return [[self alloc] initWithName:name text:text type:type];
 }
 
-+ (instancetype)sourceDefinitionWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type
++ (instancetype)sourceDefinitionWithName:(NSString*)name data:(NSData*)data type:(SXCXcodeFileType)type
 {
     return [[self alloc] initWithName:name data:data type:type];
 }
@@ -34,7 +34,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type
+- (instancetype)initWithName:(NSString*)name text:(NSString*)text type:(SXCXcodeFileType)type
 {
     self = [super init];
     if (self)
@@ -46,7 +46,7 @@
     return self;
 }
 
-- (instancetype)initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type
+- (instancetype)initWithName:(NSString*)name data:(NSData*)data type:(SXCXcodeFileType)type
 {
     self = [super init];
     if (self)

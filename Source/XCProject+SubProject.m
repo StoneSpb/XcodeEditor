@@ -51,9 +51,9 @@
             NSDictionary *containerProxy = objects[remoteRef];
             NSString *containerPortal = containerProxy[@"containerPortal"];
             if ([containerPortal isEqualToString:xcodeprojKey]) {
-                XcodeSourceFileType type = XCSourceFileTypeFromStringRepresentation(obj[@"fileType"]);
+                SXCXcodeFileType type = SXCXcodeFileTypeFromStringRepresentation(obj[@"fileType"]);
                 NSString *path = (NSString *)obj[@"path"];
-                if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"]) {
+                if (type != SXCXcodeFileTypeBundle || [[path pathExtension] isEqualToString:@"bundle"]) {
                     [results addObject:[XCSourceFile sourceFileWithProject:self
                                                                        key:key
                                                                       type:type

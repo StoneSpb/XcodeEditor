@@ -56,7 +56,7 @@
     if (self) {
         _name = [name copy];
         _path = [path copy];
-        _type = XcodeProject;
+        _type = SXCXcodeFileTypeXcodeProject;
         _parentProject = parentProject;
         _subProject = [XCProject projectWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
     }

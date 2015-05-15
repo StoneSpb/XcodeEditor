@@ -63,7 +63,7 @@
 		6BC101871477A42F0055CF03 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = /tmp;
+			dstPath = /tmp/XcodeEditorTests;
 			dstSubfolderSpec = 0;
 			files = (
 				6B783C0714AD8DF20087E522 /* ESA_Sales_Calc_ViewController.h in CopyFiles */,

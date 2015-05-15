@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 #import "XcodeMemberType.h"
-#import "XcodeSourceFileType.h"
+#import "SXCXcodeFileType.h"
 
 @class XCClassDefinition;
 @class XCGroup;

@@ -15,7 +15,7 @@
 
 + (NSString*)stringWithTestResource:(NSString*)resourceName
 {
-    NSString* filePath = [@"/tmp" stringByAppendingPathComponent:resourceName];
+    NSString* filePath = [@"/tmp/XcodeEditorTests" stringByAppendingPathComponent:resourceName];
     NSError* error = nil;
     NSString* contents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     if (!contents)
@@ -24,6 +24,5 @@
     }
     return contents;
 }
-
 
 @end

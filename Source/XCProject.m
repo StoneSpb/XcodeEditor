@@ -65,7 +65,7 @@
     NSMutableArray* results = [NSMutableArray array];
     [self.objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([obj[@"isa"] xce_hasFileReferenceType]) {
-            XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation(obj[@"lastKnownFileType"]);
+            SXCXcodeFileType fileType = SXCXcodeFileTypeFromStringRepresentation(obj[@"lastKnownFileType"]);
             NSString* path = obj[@"path"];
             NSString* sourceTree = obj[@"sourceTree"];
             XCSourceFile* sourceFile = [XCSourceFile sourceFileWithProject:self
@@ -84,7 +84,7 @@
 {
     NSDictionary* obj = self.objects[key];
     if (obj && [obj[@"isa"] xce_hasFileReferenceOrReferenceProxyType]) {
-        XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation(obj[@"lastKnownFileType"]);
+        SXCXcodeFileType fileType = SXCXcodeFileTypeFromStringRepresentation(obj[@"lastKnownFileType"]);
 
         NSString* name = obj[@"name"];
         NSString* sourceTree = obj[@"sourceTree"];
@@ -116,27 +116,27 @@
 
 - (NSArray*)headerFiles
 {
-    return [self projectFilesOfType:SourceCodeHeader];
+    return [self projectFilesOfType:SXCXcodeFileTypeSourceCodeHeader];
 }
 
 - (NSArray*)objectiveCFiles
 {
-    return [self projectFilesOfType:SourceCodeObjC];
+    return [self projectFilesOfType:SXCXcodeFileTypeSourceCodeObjC];
 }
 
 - (NSArray*)objectiveCPlusPlusFiles
 {
-    return [self projectFilesOfType:SourceCodeObjCPlusPlus];
+    return [self projectFilesOfType:SXCXcodeFileTypeSourceCodeObjCPlusPlus];
 }
 
 - (NSArray*)xibFiles
 {
-    return [self projectFilesOfType:XibFile];
+    return [self projectFilesOfType:SXCXcodeFileTypeXibFile];
 }
 
 - (NSArray*)imagePNGFiles
 {
-    return [self projectFilesOfType:ImageResourcePNG];
+    return [self projectFilesOfType:SXCXcodeFileTypeImageResourcePNG];
 }
 
 // need this value to construct relative path in XcodeprojDefinition
@@ -358,7 +358,7 @@
     return _rootObjectKey;
 }
 
-- (NSArray*)projectFilesOfType:(XcodeSourceFileType)projectFileType
+- (NSArray*)projectFilesOfType:(SXCXcodeFileType)projectFileType
 {
     NSMutableArray* results = [NSMutableArray array];
     for (XCSourceFile* file in [self files]) {

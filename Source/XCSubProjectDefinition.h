@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 #import "XCAbstractDefinition.h"
-#import "XcodeSourceFileType.h"
+#import "SXCXcodeFileType.h"
 
 @class XCProject;
 
@@ -20,7 +20,7 @@
 {
     NSString *_name;
     NSString *_path;
-    XcodeSourceFileType _type;
+    SXCXcodeFileType _type;
     XCProject *_subProject;
     XCProject *_parentProject;
     NSString *_key;
@@ -30,7 +30,7 @@
 
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) NSString *path;
-@property (nonatomic, readonly) XcodeSourceFileType type;
+@property (nonatomic, readonly) SXCXcodeFileType type;
 @property (nonatomic, strong, readonly) XCProject *subProject;
 @property (nonatomic, strong, readonly) XCProject *parentProject;
 @property (nonatomic, strong, readonly) NSString *key;

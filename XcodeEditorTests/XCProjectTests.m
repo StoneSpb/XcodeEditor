@@ -9,12 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
-
+#import "XCProject.h"
 
 #import <XCTest/XCTest.h>
-#import "XCProject.h"
+
 #import "XCSourceFile.h"
 #import "XCTarget.h"
 #import "XCGroup.h"
@@ -28,18 +26,17 @@
     __block XCProject* project;
 }
 
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 - (void)setUp
 {
-    project = [XCProject projectWithFilePath:@"/tmp"];
+    project = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests"];
 }
 
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Listing files
 
 - (void)test_able_to_list_all_the_header_files_in_a_project
 {
-
     NSArray* headerFiles = [project headerFiles];
     NSLog(@"Headers: %@", headerFiles);
 
@@ -48,12 +45,10 @@
     {
         NSLog(@"File: %@", [file description]);
     }
-
 }
 
 - (void)test_able_to_list_all_the_obj_c_files_in_a_project
 {
-
     NSArray* objcFiles = [project objectiveCFiles];
     NSLog(@"Implementation Files: %@", objcFiles);
 
@@ -71,14 +66,12 @@
 
 - (void)test_be_able_to_list_all_the_xib_files_in_a_project
 {
-
     NSArray* xibFiles = [project xibFiles];
     NSLog(@"Xib Files: %@", xibFiles);
     XCTAssertTrue([xibFiles count] == 2);
 }
 
-
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Groups
 
 - (void)test_able_to_list_all_of_the_groups_in_a_project
@@ -100,32 +93,23 @@
 
 - (void)test_provides_access_to_the_root_top_level_group
 {
-
     XCGroup* rootGroup = [project rootGroup];
     NSLog(@"Here the group: %@", rootGroup);
     XCTAssertFalse([rootGroup.members count] == 0);
-
-
 }
 
 - (void)test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group
 {
-
     XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
     XCTAssertNotNil(group);
     NSLog(@"Group: %@", group);
-
 }
 
-
-
-
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Targets
 
 - (void)test_able_to_list_the_targets_in_an_xcode_project
 {
-
     NSArray* targets = [project targets];
     for (XCTarget* target in [project targets])
     {
@@ -139,8 +123,6 @@
         NSArray* members = [target members];
         NSLog(@"Members: %@", members);
     }
-
 }
-
 
 @end

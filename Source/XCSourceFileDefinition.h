@@ -12,20 +12,20 @@
 #import <Foundation/Foundation.h>
 
 #import "XCAbstractDefinition.h"
-#import "XcodeSourceFileType.h"
+#import "SXCXcodeFileType.h"
 
 @interface XCSourceFileDefinition : XCAbstractDefinition
 {
     NSString* _sourceFileName;
-    XcodeSourceFileType _type;
+    SXCXcodeFileType _type;
     NSData* _data;
 }
 
 @property(nonatomic, strong, readonly) NSString* sourceFileName;
 @property(nonatomic, strong, readonly) NSData* data;
-@property(nonatomic, readonly) XcodeSourceFileType type;
+@property(nonatomic, readonly) SXCXcodeFileType type;
 
-+ (instancetype)sourceDefinitionWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type;
-+ (instancetype)sourceDefinitionWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type;
++ (instancetype)sourceDefinitionWithName:(NSString*)name text:(NSString*)text type:(SXCXcodeFileType)type;
++ (instancetype)sourceDefinitionWithName:(NSString*)name data:(NSData*)data type:(SXCXcodeFileType)type;
 
 @end

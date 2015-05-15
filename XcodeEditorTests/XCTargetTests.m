@@ -9,10 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "XCTarget.h"
 
 #import <XCTest/XCTest.h>
+
 #import "XCProject.h"
-#import "XCTarget.h"
 #import "XCProjectBuildConfig.h"
 
 @interface XCTargetTests : XCTestCase
@@ -23,10 +24,9 @@
     XCProject* _project;
 }
 
-
 - (void)setUp
 {
-    _project = [XCProject projectWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+    _project = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
     NSLog(@"Targets: %@", [_project targets]);
 }
 
@@ -39,14 +39,12 @@
     [_project save];
 }
 
-
 //-------------------------------------------------------------------------------------------
 #pragma mark - Build configuration. . .
 
-
 - (void)test_allows_setting_build_configurations
 {
-    XCProject* project = [XCProject projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+    XCProject* project = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCProjectBuildConfig * configuration = [target configurationWithName:@"Debug"];
@@ -56,8 +54,6 @@
     [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
     [configuration addOrReplaceSetting:@[@"foo", @"bar"] forKey:@"HEADER_SEARCH_PATHS"];
 
-
-
     configuration = [target configurationWithName:@"Release"];
     NSLog(@"Here's the configuration: %@", configuration);
     ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
@@ -66,7 +62,6 @@
     [configuration addOrReplaceSetting:@[@"foo", @"bar"] forKey:@"HEADER_SEARCH_PATHS"];
 
     [project save];
-
 }
 
 //-------------------------------------------------------------------------------------------
@@ -74,12 +69,11 @@
 
 - (void)test_allows_duplicating_a_target
 {
-    XCProject* project = [XCProject projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+    XCProject* project = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCTarget* duplicated = [target duplicateWithTargetName:@"DuplicatedTarget" productName:@"NewProduct"];
     [project save];
 }
-
 
 @end

@@ -113,19 +113,25 @@
 
     if ([classDefinition header])
     {
-        [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header] type:SourceCodeHeader
-            fileOperationStyle:[classDefinition fileOperationType]];
+        [self makeGroupMemberWithName:[classDefinition headerFileName]
+                             contents:[classDefinition header]
+                                 type:SXCXcodeFileTypeSourceCodeHeader
+                   fileOperationStyle:[classDefinition fileOperationType]];
     }
 
     if ([classDefinition isObjectiveC])
     {
-        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjC
-            fileOperationStyle:[classDefinition fileOperationType]];
+        [self makeGroupMemberWithName:[classDefinition sourceFileName]
+                             contents:[classDefinition source]
+                                 type:SXCXcodeFileTypeSourceCodeObjC
+                   fileOperationStyle:[classDefinition fileOperationType]];
     }
     else if ([classDefinition isObjectiveCPlusPlus])
     {
-        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjCPlusPlus
-            fileOperationStyle:[classDefinition fileOperationType]];
+        [self makeGroupMemberWithName:[classDefinition sourceFileName]
+                             contents:[classDefinition source]
+                                 type:SXCXcodeFileTypeSourceCodeObjCPlusPlus
+                   fileOperationStyle:[classDefinition fileOperationType]];
     }
 
     _project.objects[_key] = [self asDictionary];
@@ -147,7 +153,9 @@
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination])
         {
-            fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
+            fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name]
+                                                       name:nil
+                                                       type:SXCXcodeFileTypeFramework];
             BOOL copyFramework = NO;
             if ([frameworkDefinition fileOperationType] == XCFileOperationTypeOverwrite)
             {
@@ -156,7 +164,8 @@
             else if ([frameworkDefinition fileOperationType] == XCFileOperationTypeAcceptExisting)
             {
                 NSString* frameworkName = [[frameworkDefinition filePath] lastPathComponent];
-                if (![_fileOperationQueue fileWithName:frameworkName existsInProjectDirectory:[self pathRelativeToProjectRoot]])
+                if (![_fileOperationQueue fileWithName:frameworkName
+                              existsInProjectDirectory:[self pathRelativeToProjectRoot]])
                 {
                     copyFramework = YES;
                 }
@@ -172,7 +181,7 @@
         {
             NSString* path = [frameworkDefinition filePath];
             NSString* name = [frameworkDefinition name];
-            fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
+            fileReference = [self makeFileReferenceWithPath:path name:name type:SXCXcodeFileTypeFramework];
         }
         NSString* frameworkKey = [[XCKeyBuilder forItemNamed:[frameworkDefinition name]] build];
         objects[frameworkKey] = fileReference;
@@ -192,7 +201,9 @@
 
 - (void)addFolderReference:(NSString*)sourceFolder {
     NSString* folderName = [sourceFolder lastPathComponent];
-    NSDictionary *folderReferenceDictionary = [self makeFileReferenceWithPath:sourceFolder name:folderName type:Folder];
+    NSDictionary *folderReferenceDictionary = [self makeFileReferenceWithPath:sourceFolder
+                                                                         name:folderName
+                                                                         type:SXCXcodeFileTypeFolder];
     NSString* folderReferenceKey = [[XCKeyBuilder forItemNamed:[sourceFolder lastPathComponent]] build];
     [self addMemberWithKey:folderReferenceKey];
 
@@ -204,7 +215,9 @@
 
 - (XCGroup*)addGroupWithPath:(NSString*)path
 {
-    NSString* groupKeyPath = self.pathRelativeToProjectRoot ? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path] : path;
+    NSString* groupKeyPath = self.pathRelativeToProjectRoot
+                                 ? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path]
+                                 : path;
 
     NSString* groupKey = [[XCKeyBuilder forItemNamed:groupKeyPath] build];
 
@@ -249,7 +262,7 @@
 {
     [self makeGroupMemberWithName:[xibDefinition xibFileName]
                          contents:[xibDefinition content]
-                             type:XibFile
+                             type:SXCXcodeFileTypeXibFile
                fileOperationStyle:[xibDefinition fileOperationType]];
     _project.objects[_key] = [self asDictionary];
 }
@@ -272,7 +285,7 @@
     // (will retrieve existing if already there)
     [self makeGroupMemberWithName:[projectDefinition projectFileName]
                              path:[projectDefinition pathRelativeToProjectRoot]
-                             type:XcodeProject
+                             type:SXCXcodeFileTypeXcodeProject
                fileOperationStyle:[projectDefinition fileOperationType]];
     _project.objects[_key] = [self asDictionary];
 
@@ -536,7 +549,7 @@
 
 //-------------------------------------------------------------------------------------------
 
-- (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
+- (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(SXCXcodeFileType)type
     fileOperationStyle:(XCFileOperationType)fileOperationStyle
 {
 
@@ -585,7 +598,7 @@
 
 // creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
 // member via path rather than name, because that is how subprojects are stored by Xcode
-- (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+- (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(SXCXcodeFileType)type
     fileOperationStyle:(XCFileOperationType)fileOperationStyle
 {
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
@@ -693,12 +706,12 @@
 
 #pragma mark Dictionary Representations
 
-- (NSDictionary*)makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type
+- (NSDictionary*)makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(SXCXcodeFileType)type
 {
     NSMutableDictionary* reference = [NSMutableDictionary dictionary];
     reference[@"isa"] = [NSString xce_stringFromMemberType:PBXFileReferenceType];
     reference[@"fileEncoding"] = @"4";
-    reference[@"lastKnownFileType"] = NSStringFromXCSourceFileType(type);
+    reference[@"lastKnownFileType"] = SXCNSStringFromSXCXcodeFileType(type);
     if (name != nil)
     {
         reference[@"name"] = [name lastPathComponent];

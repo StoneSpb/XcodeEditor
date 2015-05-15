@@ -28,7 +28,7 @@
 
 + (instancetype)sourceFileWithProject:(XCProject *)project
                                   key:(NSString *)key
-                                 type:(XcodeSourceFileType)type
+                                 type:(SXCXcodeFileType)type
                                  name:(NSString *)name
                            sourceTree:(NSString *)tree
                                  path:(NSString *)path
@@ -43,7 +43,7 @@
 
 - (instancetype)initWithProject:(XCProject *)project
                             key:(NSString *)key
-                           type:(XcodeSourceFileType)type
+                           type:(SXCXcodeFileType)type
                            name:(NSString *)name
                      sourceTree:(NSString *)tree
                            path:(NSString *)path
@@ -119,34 +119,34 @@
 - (BOOL)canBecomeBuildFile
 {
     return
-        _type == SourceCodeObjC ||
-        _type == SourceCodeObjCPlusPlus ||
-        _type == SourceCodeCPlusPlus ||
-        _type == XibFile ||
-        _type == Framework ||
-        _type == ImageResourcePNG ||
-        _type == HTML ||
-        _type == Bundle ||
-        _type == Archive;
+        _type == SXCXcodeFileTypeSourceCodeObjC ||
+        _type == SXCXcodeFileTypeSourceCodeObjCPlusPlus ||
+        _type == SXCXcodeFileTypeSourceCodeCPlusPlus ||
+        _type == SXCXcodeFileTypeXibFile ||
+        _type == SXCXcodeFileTypeFramework ||
+        _type == SXCXcodeFileTypeImageResourcePNG ||
+        _type == SXCXcodeFileTypeHTML ||
+        _type == SXCXcodeFileTypeBundle ||
+        _type == SXCXcodeFileTypeArchive;
 }
 
 - (XcodeMemberType)buildPhase
 {
-    if (_type == SourceCodeObjC ||
-        _type == SourceCodeObjCPlusPlus ||
-        _type == SourceCodeCPlusPlus ||
-        _type == XibFile) {
+    if (_type == SXCXcodeFileTypeSourceCodeObjC ||
+        _type == SXCXcodeFileTypeSourceCodeObjCPlusPlus ||
+        _type == SXCXcodeFileTypeSourceCodeCPlusPlus ||
+        _type == SXCXcodeFileTypeXibFile) {
         return PBXSourcesBuildPhaseType;
     }
-    else if (_type == Framework) {
+    else if (_type == SXCXcodeFileTypeFramework) {
         return PBXFrameworksBuildPhaseType;
     }
-    else if (_type == ImageResourcePNG ||
-             _type == HTML ||
-             _type == Bundle) {
+    else if (_type == SXCXcodeFileTypeImageResourcePNG ||
+             _type == SXCXcodeFileTypeHTML ||
+             _type == SXCXcodeFileTypeBundle) {
         return PBXResourcesBuildPhaseType;
     }
-    else if (_type == Archive) {
+    else if (_type == SXCXcodeFileTypeArchive) {
         return PBXFrameworksBuildPhaseType;
     }
     return PBXNilType;
@@ -176,12 +176,12 @@
             NSString *buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
             _project.objects[buildFileKey] = sourceBuildFile;
         }
-        else if (_type == Framework) {
+        else if (_type == SXCXcodeFileTypeFramework) {
             [NSException raise:NSInvalidArgumentException format:@"Add framework to target not implemented yet."];
         }
         else {
             [NSException raise:NSInvalidArgumentException format:@"Project file of type %@ can't become a build file.",
-                                                                 NSStringFromXCSourceFileType(_type)];
+                                                                 SXCNSStringFromSXCXcodeFileType(_type)];
         }
     }
 }

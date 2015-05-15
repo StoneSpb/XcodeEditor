@@ -9,10 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "XCSubProjectDefinition.h"
 
 #import <XCTest/XCTest.h>
+
 #import "XCProject.h"
-#import "XCSubProjectDefinition.h"
 
 @interface XCSubProjectDefinitionTests : XCTestCase
 @end
@@ -22,27 +23,22 @@
     XCProject* _project;
 }
 
-
 - (void)setUp
 {
-    _project = [XCProject projectWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+    _project = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
 }
 
 #pragma mark - object creation
 
 - (void)test_allows_initialization_with_name_and_path
 {
-
     XCSubProjectDefinition
         * subProjectDefinition = [XCSubProjectDefinition subProjectDefinitionWithName:@"HelloBoxy"
-                                                                                 path:@"/tmp/HelloBoxy"
+                                                                                 path:@"/tmp/XcodeEditorTests/HelloBoxy"
                                                                         parentProject:_project];
 
     XCTAssertNotNil(subProjectDefinition);
     XCTAssertEqualObjects(subProjectDefinition.projectFileName, @"HelloBoxy.xcodeproj");
-
-
 }
-
 
 @end
