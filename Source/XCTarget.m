@@ -72,7 +72,7 @@
         NSDictionary* objects = _project.objects;
         for (NSString* buildPhaseKey in objects[_key][@"buildPhases"]) {
             NSDictionary* buildPhase = objects[buildPhaseKey];
-            if ([buildPhase[@"isa"] xce_hasResourcesBuildPhaseType]) {
+            if ([buildPhase[@"isa"] sxc_hasResourcesBuildPhaseType]) {
                 for (NSString* buildFileKey in buildPhase[@"files"]) {
                     XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
@@ -118,7 +118,7 @@
         NSDictionary* objects = _project.objects;
         for (NSString* buildPhaseKey in objects[_key][@"buildPhases"]) {
             NSDictionary* buildPhase = objects[buildPhaseKey];
-            if ([buildPhase[@"isa"] xce_hasSourcesOrFrameworksBuildPhaseType]) {
+            if ([buildPhase[@"isa"] sxc_hasSourcesOrFrameworksBuildPhaseType]) {
                 for (NSString* buildFileKey in buildPhase[@"files"]) {
                     XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
@@ -139,7 +139,7 @@
 
     for (NSString* buildPhaseKey in target[@"buildPhases"]) {
         NSMutableDictionary* buildPhase = objects[buildPhaseKey];
-        if ([buildPhase[@"isa"] xce_asMemberType] == [member buildPhase]) {
+        if ([buildPhase[@"isa"] sxc_asMemberType] == [member buildPhase]) {
             NSMutableArray* files = buildPhase[@"files"];
             NSString* buildFileKey = [member buildFileKey];
             if (![files containsObject:buildFileKey]) {
@@ -159,7 +159,7 @@
 
     for (NSString* key in [objects keyEnumerator]) {
         NSDictionary* obj = objects[key];
-        if ([obj[@"isa"] xce_hasBuildFileType]) {
+        if ([obj[@"isa"] sxc_hasBuildFileType]) {
             NSString* fileRef = obj[@"fileRef"];
             if (fileRef) {
                 buildRefWithFileRefDict[fileRef] = key;
@@ -281,7 +281,7 @@
 {
     NSDictionary* obj = _project.objects[theKey];
     if (obj) {
-        if ([obj[@"isa"] xce_hasBuildFileType]) {
+        if ([obj[@"isa"] sxc_hasBuildFileType]) {
             return [_project fileWithKey:obj[@"fileRef"]];
         }
     }

@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XcodeMemberType.h"
+#import "SXCXcodeMemberType.h"
 
 @protocol XcodeGroupMember <NSObject>
 
@@ -24,6 +24,6 @@
 /**
 * Group members can either be other groups (PBXGroup) or source files (PBXFileReference).
 */
-- (XcodeMemberType)groupMemberType;
+- (SXCXcodeMemberType)groupMemberType;
 
 @end

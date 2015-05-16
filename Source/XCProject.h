@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XcodeMemberType.h"
+#import "SXCXcodeMemberType.h"
 #import "SXCXcodeFileType.h"
 
 @class XCClassDefinition;

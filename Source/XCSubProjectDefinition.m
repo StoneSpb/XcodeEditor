@@ -83,7 +83,7 @@
     NSMutableArray *results = [[NSMutableArray alloc] init];
     NSDictionary *objects = _subProject.objects;
     [objects enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
-        if ([obj[@"isa"] xce_hasProjectType]) {
+        if ([obj[@"isa"] sxc_hasProjectType]) {
             NSString *productRefGroupKey = obj[@"productRefGroup"];
             NSDictionary *products = objects[productRefGroupKey];
             NSArray *children = products[@"children"];
@@ -100,7 +100,7 @@
 - (NSString *)projectKey
 {
     if (_key == nil) {
-        NSArray *xcodeprojKeys = [_parentProject keysForProjectObjectsOfType:PBXFileReferenceType
+        NSArray *xcodeprojKeys = [_parentProject keysForProjectObjectsOfType:SXCXcodeMemberTypePBXFileReference
             withIdentifier:[self pathRelativeToProjectRoot] singleton:YES required:YES];
         _key = [[xcodeprojKeys objectAtIndex:0] copy];
     }

@@ -64,7 +64,7 @@
 {
     NSMutableArray* results = [NSMutableArray array];
     [self.objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([obj[@"isa"] xce_hasFileReferenceType]) {
+        if ([obj[@"isa"] sxc_hasFileReferenceType]) {
             SXCXcodeFileType fileType = SXCXcodeFileTypeFromStringRepresentation(obj[@"lastKnownFileType"]);
             NSString* path = obj[@"path"];
             NSString* sourceTree = obj[@"sourceTree"];
@@ -83,7 +83,7 @@
 - (XCSourceFile*)fileWithKey:(NSString*)key
 {
     NSDictionary* obj = self.objects[key];
-    if (obj && [obj[@"isa"] xce_hasFileReferenceOrReferenceProxyType]) {
+    if (obj && [obj[@"isa"] sxc_hasFileReferenceOrReferenceProxyType]) {
         SXCXcodeFileType fileType = SXCXcodeFileTypeFromStringRepresentation(obj[@"lastKnownFileType"]);
 
         NSString* name = obj[@"name"];
@@ -154,7 +154,7 @@
 {
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [self.objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([obj[@"isa"] xce_hasGroupType]) {
+        if ([obj[@"isa"] sxc_hasGroupType]) {
             XCGroup* group = _groups[key];
             if (group == nil) {
                 group = [self createGroupWithDictionary:obj forKey:key];
@@ -202,7 +202,7 @@
     }
 
     NSDictionary* obj = self.objects[key];
-    if (obj && [obj[@"isa"] xce_hasGroupType]) {
+    if (obj && [obj[@"isa"] sxc_hasGroupType]) {
         XCGroup* group = [self createGroupWithDictionary:obj forKey:key];
         _groups[key] = group;
 
@@ -269,7 +269,7 @@
     if (_targets == nil) {
         _targets = [[NSMutableArray alloc] init];
         [self.objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-            if ([obj[@"isa"] xce_hasNativeTargetType]) {
+            if ([obj[@"isa"] sxc_hasNativeTargetType]) {
                 XCTarget* target = [XCTarget targetWithProject:self
                                                            key:key
                                                           name:obj[@"name"]

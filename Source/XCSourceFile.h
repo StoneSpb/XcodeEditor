@@ -53,7 +53,7 @@
 - (BOOL)isBuildFile;
 - (BOOL)canBecomeBuildFile;
 
-- (XcodeMemberType)buildPhase;
+- (SXCXcodeMemberType)buildPhase;
 
 - (NSString *)buildFileKey;
 

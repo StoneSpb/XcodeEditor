@@ -21,8 +21,10 @@
 
 - (void)addAsTargetDependency:(XCSubProjectDefinition *)xcodeprojDefinition toTargets:(NSArray *)targets;
 
-- (NSArray *)keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString *)identifier
-    singleton:(BOOL)singleton required:(BOOL)required;
+- (NSArray *)keysForProjectObjectsOfType:(SXCXcodeMemberType)memberType
+                          withIdentifier:(NSString *)identifier
+                               singleton:(BOOL)singleton
+                                required:(BOOL)required;
 
 - (NSMutableDictionary *)PBXProjectDict;
 

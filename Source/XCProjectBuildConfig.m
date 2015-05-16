@@ -32,7 +32,7 @@
         NSDictionary* buildConfiguration = project.objects[buildConfigurationKey];
         NSString* name = buildConfiguration[@"name"];
 
-        if ([buildConfiguration[@"isa"] xce_hasBuildConfigurationType]) {
+        if ([buildConfiguration[@"isa"] sxc_hasBuildConfigurationType]) {
             XCProjectBuildConfig* configuration = configurations[name];
             if (!configuration) {
                 configuration = [[XCProjectBuildConfig alloc] initWithProject:project key:buildConfigurationKey];
