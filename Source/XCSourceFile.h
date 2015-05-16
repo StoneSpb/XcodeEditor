@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XcodeGroupMember.h"
+#import "SXCXcodeGroupMember.h"
 #import "SXCXcodeFileType.h"
 
 @class XCProject;
@@ -19,7 +19,7 @@
 /**
 * Represents a file resource in an xcode project.
 */
-@interface XCSourceFile : NSObject<XcodeGroupMember>
+@interface XCSourceFile : NSObject<SXCXcodeGroupMember>
 {
 
 @private

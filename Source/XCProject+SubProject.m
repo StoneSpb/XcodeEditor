@@ -11,7 +11,7 @@
 
 #import "XCProject+SubProject.h"
 
-#import "Utils/XCKeyBuilder.h"
+#import "Utils/SXCKeyBuilder.h"
 #import "XCSourceFile.h"
 #import "XCSubProjectDefinition.h"
 #import "XCTarget.h"
@@ -224,11 +224,11 @@
     proxy[@"containerPortal"] = fileRef;
     proxy[@"proxyType"] = proxyType;
     // give it a random key - the keys xcode puts here are not in the project file anywhere else
-    NSString *key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-junk", keyName]] build];
+    NSString *key = [[SXCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-junk", keyName]] build];
     proxy[@"remoteGlobalIDString"] = key;
     proxy[@"remoteInfo"] = name;
     // add to project. use proxyType to generate key, so that multiple keys for the same name don't overwrite each other
-    key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-containerProxy-%@", keyName, proxyType]] build];
+    key = [[SXCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-containerProxy-%@", keyName, proxyType]] build];
     objects[key] = proxy;
 
     return key;
@@ -258,7 +258,7 @@
     proxy[@"remoteRef"] = containerItemProxyKey;
     proxy[@"sourceTree"] = [buildProductReference valueForKey:@"sourceTree"];
     // add to project
-    NSString *key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-referenceProxy", path]] build];
+    NSString *key = [[SXCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-referenceProxy", path]] build];
     objects[key] = proxy;
 }
 
@@ -292,7 +292,7 @@
     targetDependency[@"name"] = name;
     targetDependency[@"targetProxy"] = containerItemProxyKey;
     NSString *targetDependencyKey =
-        [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", keyName]] build];
+        [[SXCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", keyName]] build];
     objects[targetDependencyKey] = targetDependency;
     return targetDependencyKey;
 }

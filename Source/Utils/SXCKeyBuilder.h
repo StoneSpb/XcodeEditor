@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2012 - 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -11,19 +11,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SXCXcodeMemberType.h"
+@interface SXCKeyBuilder : NSObject
 
-@protocol XcodeGroupMember <NSObject>
++ (instancetype)forItemNamed:(NSString*)name;
++ (instancetype)createUnique;
 
-- (NSString*)key;
+- (instancetype)initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length;
 
-- (NSString*)displayName;
-
-- (NSString*)pathRelativeToProjectRoot;
-
-/**
-* Group members can either be other groups (PBXGroup) or source files (PBXFileReference).
-*/
-- (SXCXcodeMemberType)groupMemberType;
+- (NSString*)build;
 
 @end

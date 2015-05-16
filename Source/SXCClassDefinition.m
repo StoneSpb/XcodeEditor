@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCClassDefinition.h"
+#import "SXCClassDefinition.h"
 
-@implementation XCClassDefinition
+@implementation SXCClassDefinition
 
 @synthesize className = _className;
 @synthesize header = _header;
@@ -26,7 +26,7 @@
     return [[self alloc] initWithName:fileName];
 }
 
-+ (instancetype)classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language
++ (instancetype)classDefinitionWithName:(NSString*)className language:(SXCClassDefinitionLanguage)language
 {
     return [[self alloc] initWithName:className language:language];
 }
@@ -37,17 +37,17 @@
 
 - (instancetype)initWithName:(NSString*)className
 {
-    return [self initWithName:className language:ObjectiveC];
+    return [self initWithName:className language:SXCClassDefinitionLanguageObjectiveC];
 }
 
-- (instancetype)initWithName:(NSString*)className language:(ClassDefinitionLanguage)language
+- (instancetype)initWithName:(NSString*)className language:(SXCClassDefinitionLanguage)language
 {
     self = [super init];
     if (self) {
         _className = [className copy];
-        if (!(language == ObjectiveC ||
-              language == ObjectiveCPlusPlus ||
-              language == CPlusPlus)) {
+        if (!(language == SXCClassDefinitionLanguageObjectiveC ||
+              language == SXCClassDefinitionLanguageObjectiveCPlusPlus ||
+              language == SXCClassDefinitionLanguageCPlusPlus)) {
             [NSException raise:NSInvalidArgumentException
                         format:@"Language must be one of ObjectiveC, ObjectiveCPlusPlus"];
         }
@@ -62,17 +62,17 @@
 
 - (BOOL)isObjectiveC
 {
-    return _language == ObjectiveC;
+    return _language == SXCClassDefinitionLanguageObjectiveC;
 }
 
 - (BOOL)isObjectiveCPlusPlus
 {
-    return _language == ObjectiveCPlusPlus;
+    return _language == SXCClassDefinitionLanguageObjectiveCPlusPlus;
 }
 
 - (BOOL)isCPlusPlus
 {
-    return _language == CPlusPlus;
+    return _language == SXCClassDefinitionLanguageCPlusPlus;
 }
 
 - (NSString*)headerFileName

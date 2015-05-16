@@ -12,7 +12,7 @@
 #import "XCTarget.h"
 
 #import "XCGroup.h"
-#import "XCKeyBuilder.h"
+#import "SXCKeyBuilder.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
 #import "XCProjectBuildConfig.h"
@@ -306,7 +306,7 @@
     dupPath = [dupPath stringByAppendingPathExtension:@"app"];
     dupProductReference[@"path"] = dupPath;
 
-    NSString* dupProductReferenceKey = [[XCKeyBuilder createUnique] build];
+    NSString* dupProductReferenceKey = [[SXCKeyBuilder createUnique] build];
 
     objects[dupProductReferenceKey] = dupProductReference;
     dupTargetObj[@"productReference"] = dupProductReferenceKey;
@@ -323,7 +323,7 @@
 
         for (NSString* fileKey in dupBuildPhase[@"files"]) {
             NSMutableDictionary* dupFile = [objects[fileKey] mutableCopy];
-            NSString* dupFileKey = [[XCKeyBuilder createUnique] build];
+            NSString* dupFileKey = [[SXCKeyBuilder createUnique] build];
 
             objects[dupFileKey] = dupFile;
             [dupFiles addObject:dupFileKey];
@@ -331,7 +331,7 @@
 
         dupBuildPhase[@"files"] = dupFiles;
 
-        NSString* dupBuildPhaseKey = [[XCKeyBuilder createUnique] build];
+        NSString* dupBuildPhaseKey = [[SXCKeyBuilder createUnique] build];
         objects[dupBuildPhaseKey] = dupBuildPhase;
         [buildPhases addObject:dupBuildPhaseKey];
     }
@@ -356,7 +356,7 @@
 
 - (NSString*)addTargetToRootObjectTargets:(NSMutableDictionary*)dupTargetObj
 {
-    NSString* dupTargetObjKey = [[XCKeyBuilder createUnique] build];
+    NSString* dupTargetObjKey = [[SXCKeyBuilder createUnique] build];
     NSMutableDictionary* objects = _project.objects;
 
     objects[dupTargetObjKey] = dupTargetObj;

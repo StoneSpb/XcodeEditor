@@ -11,12 +11,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XCAbstractDefinition.h"
+#import "SXCAbstractDefinition.h"
 #import "SXCXcodeFileType.h"
 
 @class XCProject;
 
-@interface XCSubProjectDefinition : XCAbstractDefinition
+@interface XCSubProjectDefinition : SXCAbstractDefinition
 {
     NSString *_name;
     NSString *_path;

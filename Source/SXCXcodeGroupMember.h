@@ -11,20 +11,19 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SXCAbstractDefinition.h"
+#import "SXCXcodeMemberType.h"
 
-@interface XCXibDefinition : SXCAbstractDefinition
-{
-    NSString* _name;
-    NSString* _content;
-}
+@protocol SXCXcodeGroupMember <NSObject>
 
-@property(nonatomic, strong, readonly) NSString* name;
-@property(nonatomic, strong) NSString* content;
+- (NSString*)key;
 
-+ (instancetype)xibDefinitionWithName:(NSString*)name;
-+ (instancetype)xibDefinitionWithName:(NSString*)name content:(NSString*)content;
+- (NSString*)displayName;
 
-- (NSString*)xibFileName;
+- (NSString*)pathRelativeToProjectRoot;
+
+/**
+* Group members can either be other groups (PBXGroup) or source files (PBXFileReference).
+*/
+- (SXCXcodeMemberType)groupMemberType;
 
 @end

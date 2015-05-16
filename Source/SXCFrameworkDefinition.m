@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCFrameworkDefinition.h"
+#import "SXCFrameworkDefinition.h"
 
-@implementation XCFrameworkDefinition
+@implementation SXCFrameworkDefinition
 
 @synthesize filePath = _filePath;
 @synthesize copyToDestination = _copyToDestination;

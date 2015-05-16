@@ -9,15 +9,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCKeyBuilder.h"
+#import "SXCKeyBuilder.h"
 
-@implementation XCKeyBuilder
+#import <CommonCrypto/CommonDigest.h>
+
+#define HASH_VALUE_STORAGE_SIZE 48
+
+typedef struct
+{
+    char value[CC_MD5_DIGEST_LENGTH];
+} SXCHashValueMD5Hash;
+
+@implementation SXCKeyBuilder
+{
+    unsigned char _value[HASH_VALUE_STORAGE_SIZE];
+}
 
 /* ================================================= Class Methods ================================================== */
 + (instancetype)forItemNamed:(NSString*)name
 {
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
-    return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];
+    return [[SXCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];
 }
 
 + (instancetype)createUnique
@@ -26,7 +38,7 @@
     CFUUIDBytes bytes = CFUUIDGetUUIDBytes(theUUID);
     CFRelease(theUUID);
 
-    return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:&bytes length:sizeof(bytes)];
+    return [[SXCKeyBuilder alloc] initHashValueMD5HashWithBytes:&bytes length:sizeof(bytes)];
 }
 
 /* ================================================== Initializers ================================================== */
@@ -43,7 +55,7 @@
 /* ================================================ Interface Methods =============================================== */
 - (NSString*)build
 {
-    NSInteger byteLength = sizeof(HashValueMD5Hash);
+    NSInteger byteLength = sizeof(SXCHashValueMD5Hash);
     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];
     NSInteger i;
     for (i = 0; i < byteLength; i++)

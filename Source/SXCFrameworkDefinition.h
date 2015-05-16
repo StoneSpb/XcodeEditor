@@ -11,9 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XCAbstractDefinition.h"
+#import "SXCAbstractDefinition.h"
 
-@interface XCFrameworkDefinition : XCAbstractDefinition
+@interface SXCFrameworkDefinition : SXCAbstractDefinition
 {
     NSString* _filePath;
     BOOL _copyToDestination;

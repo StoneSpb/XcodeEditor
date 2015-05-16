@@ -14,7 +14,7 @@
 #import "XCGroup.h"
 #import "XCSourceFile.h"
 #import "XCTarget.h"
-#import "XCFileOperationQueue.h"
+#import "SXCFileOperationQueue.h"
 #import "XCProjectBuildConfig.h"
 
 @implementation XCProject
@@ -47,7 +47,7 @@
         }
 
         _fileOperationQueue =
-            [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
+            [[SXCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
 
     }
     return self;
@@ -224,7 +224,7 @@
 - (XCGroup*)groupWithSourceFile:(XCSourceFile*)sourceFile
 {
     for (XCGroup* group in [self groups]) {
-        for (id <XcodeGroupMember> member in [group members]) {
+        for (id <SXCXcodeGroupMember> member in [group members]) {
             if ([member isKindOfClass:[XCSourceFile class]] && [[sourceFile key] isEqualToString:[member key]]) {
                 return group;
             }
@@ -240,7 +240,7 @@
     NSArray* pathItems = [path pathComponents];
     XCGroup* currentGroup = [self rootGroup];
     for (NSString* pathItem in pathItems) {
-        id <XcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
+        id <SXCXcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
         if ([group isKindOfClass:[XCGroup class]]) {
             currentGroup = group;
         } else {

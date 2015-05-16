@@ -11,14 +11,14 @@
 
 #import "XCGroup.h"
 
-#import "XCFrameworkDefinition.h"
+#import "SXCFrameworkDefinition.h"
 #import "XCTarget.h"
-#import "XCFileOperationQueue.h"
+#import "SXCFileOperationQueue.h"
 #import "XCXibDefinition.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "XCClassDefinition.h"
-#import "Utils/XCKeyBuilder.h"
+#import "SXCClassDefinition.h"
+#import "Utils/SXCKeyBuilder.h"
 #import "XCSourceFileDefinition.h"
 #import "XCSubProjectDefinition.h"
 #import "XCProject+SubProject.h"
@@ -108,7 +108,7 @@
 #pragma mark Adding children
 
 
-- (void)addClass:(XCClassDefinition*)classDefinition
+- (void)addClass:(SXCClassDefinition*)classDefinition
 {
 
     if ([classDefinition header])
@@ -138,14 +138,14 @@
 }
 
 
-- (void)addClass:(XCClassDefinition*)classDefinition toTargets:(NSArray*)targets
+- (void)addClass:(SXCClassDefinition*)classDefinition toTargets:(NSArray*)targets
 {
     [self addClass:classDefinition];
     XCSourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
-- (void)addFramework:(XCFrameworkDefinition*)frameworkDefinition
+- (void)addFramework:(SXCFrameworkDefinition*)frameworkDefinition
 {
     NSMutableDictionary* objects = _project.objects;
     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil)
@@ -157,11 +157,11 @@
                                                        name:nil
                                                        type:SXCXcodeFileTypeFramework];
             BOOL copyFramework = NO;
-            if ([frameworkDefinition fileOperationType] == XCFileOperationTypeOverwrite)
+            if ([frameworkDefinition fileOperationType] == SXCFileOperationTypeOverwrite)
             {
                 copyFramework = YES;
             }
-            else if ([frameworkDefinition fileOperationType] == XCFileOperationTypeAcceptExisting)
+            else if ([frameworkDefinition fileOperationType] == SXCFileOperationTypeAcceptExisting)
             {
                 NSString* frameworkName = [[frameworkDefinition filePath] lastPathComponent];
                 if (![_fileOperationQueue fileWithName:frameworkName
@@ -174,7 +174,7 @@
             if (copyFramework)
             {
                 [_fileOperationQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
-                    inDirectory:[self pathRelativeToProjectRoot]];
+                                                    inDirectory:[self pathRelativeToProjectRoot]];
             }
         }
         else
@@ -183,7 +183,7 @@
             NSString* name = [frameworkDefinition name];
             fileReference = [self makeFileReferenceWithPath:path name:name type:SXCXcodeFileTypeFramework];
         }
-        NSString* frameworkKey = [[XCKeyBuilder forItemNamed:[frameworkDefinition name]] build];
+        NSString* frameworkKey = [[SXCKeyBuilder forItemNamed:[frameworkDefinition name]] build];
         objects[frameworkKey] = fileReference;
         [self addMemberWithKey:frameworkKey];
     }
@@ -191,7 +191,7 @@
 }
 
 
-- (void)addFramework:(XCFrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets
+- (void)addFramework:(SXCFrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets
 {
     [self addFramework:frameworkDefinition];
     XCSourceFile* frameworkSourceRef = (XCSourceFile*) [self memberWithDisplayName:[frameworkDefinition name]];
@@ -204,7 +204,7 @@
     NSDictionary *folderReferenceDictionary = [self makeFileReferenceWithPath:sourceFolder
                                                                          name:folderName
                                                                          type:SXCXcodeFileTypeFolder];
-    NSString* folderReferenceKey = [[XCKeyBuilder forItemNamed:[sourceFolder lastPathComponent]] build];
+    NSString* folderReferenceKey = [[SXCKeyBuilder forItemNamed:[sourceFolder lastPathComponent]] build];
     [self addMemberWithKey:folderReferenceKey];
 
     NSMutableDictionary* objects = _project.objects;
@@ -219,10 +219,10 @@
                                  ? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path]
                                  : path;
 
-    NSString* groupKey = [[XCKeyBuilder forItemNamed:groupKeyPath] build];
+    NSString* groupKey = [[SXCKeyBuilder forItemNamed:groupKeyPath] build];
 
     NSArray* members = [self members];
-    for (id <XcodeGroupMember> groupMember in members)
+    for (id <SXCXcodeGroupMember> groupMember in members)
     {
         SXCXcodeMemberType groupMemberType = [groupMember groupMemberType];
         if (groupMemberType == SXCXcodeMemberTypePBXGroup ||
@@ -432,7 +432,7 @@
 {
 
     NSMutableArray* arrayOfBuildFileKeys = [NSMutableArray array];
-    for (id <XcodeGroupMember> groupMember in [self members])
+    for (id <SXCXcodeGroupMember> groupMember in [self members])
     {
         SXCXcodeMemberType groupMemberType = [groupMember groupMemberType];
         if (groupMemberType == SXCXcodeMemberTypePBXGroup ||
@@ -449,9 +449,9 @@
     return arrayOfBuildFileKeys;
 }
 
-- (id <XcodeGroupMember>)memberWithKey:(NSString*)key
+- (id <SXCXcodeGroupMember>)memberWithKey:(NSString*)key
 {
-    id <XcodeGroupMember> groupMember = nil;
+    id <SXCXcodeGroupMember> groupMember = nil;
 
     if ([_children containsObject:key])
     {
@@ -469,9 +469,9 @@
     return groupMember;
 }
 
-- (id <XcodeGroupMember>)memberWithDisplayName:(NSString*)name
+- (id <SXCXcodeGroupMember>)memberWithDisplayName:(NSString*)name
 {
-    for (id <XcodeGroupMember> member in [self members])
+    for (id <SXCXcodeGroupMember> member in [self members])
     {
         if ([[member displayName] isEqualToString:name])
         {
@@ -556,16 +556,17 @@
 
 //-------------------------------------------------------------------------------------------
 
-- (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(SXCXcodeFileType)type
-    fileOperationStyle:(XCFileOperationType)fileOperationStyle
+- (void)makeGroupMemberWithName:(NSString*)name
+                       contents:(id)contents
+                           type:(SXCXcodeFileType)type
+             fileOperationStyle:(SXCFileOperationType)fileOperationStyle
 {
-
     NSString* filePath;
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil)
     {
         NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
-        NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
+        NSString* fileKey = [[SXCKeyBuilder forItemNamed:name] build];
         _project.objects[fileKey] = reference;
         [self addMemberWithKey:fileKey];
         filePath = [self pathRelativeToProjectRoot];
@@ -576,12 +577,12 @@
     }
 
     BOOL writeFile = NO;
-    if (fileOperationStyle == XCFileOperationTypeOverwrite)
+    if (fileOperationStyle == SXCFileOperationTypeOverwrite)
     {
         writeFile = YES;
         [_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath];
     }
-    else if (fileOperationStyle == XCFileOperationTypeAcceptExisting &&
+    else if (fileOperationStyle == SXCFileOperationTypeAcceptExisting &&
         ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath])
     {
         writeFile = YES;
@@ -605,14 +606,16 @@
 
 // creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
 // member via path rather than name, because that is how subprojects are stored by Xcode
-- (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(SXCXcodeFileType)type
-    fileOperationStyle:(XCFileOperationType)fileOperationStyle
+- (void)makeGroupMemberWithName:(NSString*)name
+                           path:(NSString*)path
+                           type:(SXCXcodeFileType)type
+             fileOperationStyle:(SXCFileOperationType)fileOperationStyle
 {
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil)
     {
         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
-        NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
+        NSString* fileKey = [[SXCKeyBuilder forItemNamed:name] build];
         _project.objects[fileKey] = reference;
         [self addMemberWithKey:fileKey];
     }
@@ -628,7 +631,7 @@
         [children addObject:[_project referenceProxyKeyForName:productName]];
         uniquer = [uniquer stringByAppendingString:productName];
     }
-    NSString* productKey = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
+    NSString* productKey = [[SXCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
     XCGroup* productsGroup = [XCGroup groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
     _project.objects[productKey] = [productsGroup asDictionary];
     return productKey;

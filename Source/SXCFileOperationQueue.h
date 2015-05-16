@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface XCFileOperationQueue : NSObject
+@interface SXCFileOperationQueue : NSObject
 {
 @private
     NSString* _baseDirectory;

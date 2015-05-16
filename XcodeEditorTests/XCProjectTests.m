@@ -81,7 +81,7 @@
     for (XCGroup* group in groups)
     {
         NSLog(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
-        for (id <XcodeGroupMember> member  in [group members])
+        for (id <SXCXcodeGroupMember> member  in [group members])
         {
             NSLog(@"\t%@", [member displayName]);
         }

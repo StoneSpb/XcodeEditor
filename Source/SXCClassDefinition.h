@@ -11,23 +11,23 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XCAbstractDefinition.h"
+#import "SXCAbstractDefinition.h"
 
 typedef enum
 {
-    ObjectiveC,
-    ObjectiveCPlusPlus,
-    CPlusPlus,
-} ClassDefinitionLanguage;
+    SXCClassDefinitionLanguageObjectiveC,
+    SXCClassDefinitionLanguageObjectiveCPlusPlus,
+    SXCClassDefinitionLanguageCPlusPlus,
+} SXCClassDefinitionLanguage;
 
-@interface XCClassDefinition : XCAbstractDefinition
+@interface SXCClassDefinition : SXCAbstractDefinition
 {
     NSString* _className;
     NSString* _header;
     NSString* _source;
 
 @private
-    ClassDefinitionLanguage _language;
+    SXCClassDefinitionLanguage _language;
     NSString* _sourceFileName;
 }
 
@@ -43,7 +43,7 @@ typedef enum
 /**
  * Creates a new class definition with the specified language.
  */
-+ (instancetype)classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
++ (instancetype)classDefinitionWithName:(NSString*)className language:(SXCClassDefinitionLanguage)language;
 
 - (BOOL)isObjectiveC;
 - (BOOL)isObjectiveCPlusPlus;

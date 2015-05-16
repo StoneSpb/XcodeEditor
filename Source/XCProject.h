@@ -14,9 +14,9 @@
 #import "SXCXcodeMemberType.h"
 #import "SXCXcodeFileType.h"
 
-@class XCClassDefinition;
+@class SXCClassDefinition;
 @class XCGroup;
-@class XCFileOperationQueue;
+@class SXCFileOperationQueue;
 @class XCSourceFile;
 @class XCTarget;
 @class XCSubProjectDefinition;
@@ -27,7 +27,7 @@ NSString* const XCProjectNotFoundException;
 @interface XCProject : NSObject
 {
 @protected
-    XCFileOperationQueue* _fileOperationQueue;
+    SXCFileOperationQueue* _fileOperationQueue;
 
     NSString* _filePath;
     NSString* _dataStorePath;
@@ -41,7 +41,7 @@ NSString* const XCProjectNotFoundException;
     NSString* _rootObjectKey;
 }
 
-@property(nonatomic, strong, readonly) XCFileOperationQueue* fileOperationQueue;
+@property(nonatomic, strong, readonly) SXCFileOperationQueue* fileOperationQueue;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction

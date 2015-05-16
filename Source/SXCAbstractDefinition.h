@@ -17,30 +17,30 @@ typedef enum
     * Creates the reference in the project and writes the contents to disk. If a file already exists at the specified
     * location, its contents will be updated.
     */
-        XCFileOperationTypeOverwrite,
+        SXCFileOperationTypeOverwrite,
 
     /**
     * Creates the reference in the project. If a file already exists at the specified location, the contents will not
     * be updated.
     */
-        XCFileOperationTypeAcceptExisting,
+        SXCFileOperationTypeAcceptExisting,
 
     /**
     * Creates the reference in the project, but does not write to disk. The filesystem is expected to be updated
      * through some other means.
     */
-        XCFileOperationTypeReferenceOnly
-} XCFileOperationType;
+        SXCFileOperationTypeReferenceOnly
+} SXCFileOperationType;
 
 
 /**
 * Holds properties to all types of resource that can be added to an Xcode project.
 */
-@interface XCAbstractDefinition : NSObject
+@interface SXCAbstractDefinition : NSObject
 {
-    XCFileOperationType _fileOperationType;
+    SXCFileOperationType _fileOperationType;
 }
 
-@property(nonatomic) XCFileOperationType fileOperationType;
+@property(nonatomic) SXCFileOperationType fileOperationType;
 
 @end

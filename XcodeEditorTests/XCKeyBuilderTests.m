@@ -11,7 +11,7 @@
 
 
 #import <XCTest/XCTest.h>
-#import "XCKeyBuilder.h"
+#import "SXCKeyBuilder.h"
 
 @interface XCKeyBuilderTests : XCTestCase
 
@@ -27,7 +27,7 @@
 
     NSString* requiresKey = @"ESA_Sales_Customer_Browse_ViewController.h";
 
-    XCKeyBuilder* builtKey = [XCKeyBuilder forItemNamed:requiresKey];
+    SXCKeyBuilder* builtKey = [SXCKeyBuilder forItemNamed:requiresKey];
     NSString* key = [builtKey build];
     NSLog(@"Key: %@", key);
     XCTAssertNotNil(key);

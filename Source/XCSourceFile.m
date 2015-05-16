@@ -12,7 +12,7 @@
 #import "XCSourceFile.h"
 
 #import "XCProject.h"
-#import "Utils/XCKeyBuilder.h"
+#import "Utils/SXCKeyBuilder.h"
 #import "XCGroup.h"
 
 @implementation XCSourceFile
@@ -173,7 +173,7 @@
             NSMutableDictionary *sourceBuildFile = [NSMutableDictionary dictionary];
             sourceBuildFile[@"isa"] = [NSString sxc_stringFromMemberType:SXCXcodeMemberTypePBXBuildFile];
             sourceBuildFile[@"fileRef"] = _key;
-            NSString *buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
+            NSString *buildFileKey = [[SXCKeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
             _project.objects[buildFileKey] = sourceBuildFile;
         }
         else if (_type == SXCXcodeFileTypeFramework) {

@@ -9,25 +9,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "SXCClassDefinition.h"
+
 #import <XCTest/XCTest.h>
-#import "XCClassDefinition.h"
 
 @interface XCClassDefinitionTests : XCTestCase
 @end
 
 @implementation XCClassDefinitionTests
 {
-    XCClassDefinition* classDefinition;
+    SXCClassDefinition* classDefinition;
 }
 
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Object creation
-
-
 
 - (void)test_allows_initialization_with_a_fileName_attribute
 {
-    classDefinition = [XCClassDefinition classDefinitionWithName:@"ESA_Sales_Browse_ViewController"];
+    classDefinition = [SXCClassDefinition classDefinitionWithName:@"ESA_Sales_Browse_ViewController"];
 
     XCTAssertNotNil(classDefinition.className);
     XCTAssertEqualObjects(classDefinition.className, @"ESA_Sales_Browse_ViewController");
@@ -36,8 +35,8 @@
 
 - (void)test_allow_initialization_with_a_filename_and_language_attribute
 {
-    classDefinition = [XCClassDefinition classDefinitionWithName:@"ESA_Sales_Browse_ViewController"
-                                                        language:ObjectiveCPlusPlus];
+    classDefinition = [SXCClassDefinition classDefinitionWithName:@"ESA_Sales_Browse_ViewController"
+                                                         language:SXCClassDefinitionLanguageObjectiveCPlusPlus];
     XCTAssertTrue([classDefinition isObjectiveCPlusPlus]);
 }
 
@@ -45,8 +44,8 @@
 {
     @try
     {
-        classDefinition = [XCClassDefinition classDefinitionWithName:@"ESA_Sales_Browse_ViewController"
-                                                            language:999];
+        classDefinition = [SXCClassDefinition classDefinitionWithName:@"ESA_Sales_Browse_ViewController"
+                                                             language:999];
         [NSException raise:@"Test fails." format:@"Expected exception to be thrown"];
     }
     @catch (NSException* e)
@@ -55,24 +54,23 @@
     }
 }
 
-
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - File-names
-
 
 - (void)test_it_returns_the_conventional_file_names_for_objective_c_classes
 {
-    classDefinition = [XCClassDefinition classDefinitionWithName:@"MyClass" language:ObjectiveC];
+    classDefinition = [SXCClassDefinition classDefinitionWithName:@"MyClass"
+                                                         language:SXCClassDefinitionLanguageObjectiveC];
     XCTAssertEqualObjects([classDefinition headerFileName], @"MyClass.h");
     XCTAssertEqualObjects([classDefinition sourceFileName], @"MyClass.m");
 }
 
 - (void)test_it_returns_the_conventional_file_names_for_objective_cPlusPlus_classes
 {
-    classDefinition = [XCClassDefinition classDefinitionWithName:@"MyClass" language:ObjectiveCPlusPlus];
+    classDefinition = [SXCClassDefinition classDefinitionWithName:@"MyClass"
+                                                         language:SXCClassDefinitionLanguageObjectiveCPlusPlus];
     XCTAssertEqualObjects([classDefinition headerFileName], @"MyClass.h");
     XCTAssertEqualObjects([classDefinition sourceFileName], @"MyClass.mm");
 }
-
 
 @end

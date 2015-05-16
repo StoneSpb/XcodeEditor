@@ -15,11 +15,11 @@
 
 #import "XCProject.h"
 #import "XCSubProjectDefinition.h"
-#import "XCClassDefinition.h"
+#import "SXCClassDefinition.h"
 #import "XCSourceFile.h"
 #import "XCXibDefinition.h"
 #import "XCTarget.h"
-#import "XCFrameworkDefinition.h"
+#import "SXCFrameworkDefinition.h"
 #import "XCSourceFileDefinition.h"
 #import "NSString+TestResource.h"
 
@@ -91,7 +91,7 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_adding_a_source_file
 {
-    XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"MyViewController"];
+    SXCClassDefinition* classDefinition = [SXCClassDefinition classDefinitionWithName:@"MyViewController"];
 
     [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
     [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
@@ -118,7 +118,7 @@ static const NSString* SDK_PATH =
 
 - (void)test_provides_a_convenience_method_to_add_a_source_file_and_specify_targets
 {
-    XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"AnotherClassAdded"];
+    SXCClassDefinition* classDefinition = [SXCClassDefinition classDefinitionWithName:@"AnotherClassAdded"];
 
     [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
     [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
@@ -129,13 +129,13 @@ static const NSString* SDK_PATH =
 
 - (void)test_returns_a_warning_if_an_existing_class_is_overwritten
 {
-    XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"AddedTwice"];
+    SXCClassDefinition* classDefinition = [SXCClassDefinition classDefinitionWithName:@"AddedTwice"];
     [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
     [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
     [group addClass:classDefinition toTargets:[project targets]];
     [project save];
 
-    classDefinition = [XCClassDefinition classDefinitionWithName:@"AddedTwice"];
+    classDefinition = [SXCClassDefinition classDefinitionWithName:@"AddedTwice"];
     [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
     [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
     [group addClass:classDefinition toTargets:[project targets]];
@@ -144,8 +144,8 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_creating_a_reference_only_without_writing_to_disk
 {
-    XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"ClassWithoutSourceFileYet"];
-    [classDefinition setFileOperationType:XCFileOperationTypeReferenceOnly];
+    SXCClassDefinition* classDefinition = [SXCClassDefinition classDefinitionWithName:@"ClassWithoutSourceFileYet"];
+    [classDefinition setFileOperationType:SXCFileOperationTypeReferenceOnly];
     [group addClass:classDefinition toTargets:[project targets]];
     [project save];
 }
@@ -158,8 +158,9 @@ static const NSString* SDK_PATH =
     XCProject* anotherProject = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
     XCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
-    XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"HelloWorldLayer"
-                                                                           language:ObjectiveCPlusPlus];
+    SXCClassDefinition* classDefinition =
+        [SXCClassDefinition classDefinitionWithName:@"HelloWorldLayer"
+                                           language:SXCClassDefinitionLanguageObjectiveCPlusPlus];
 
     [classDefinition setHeader:[NSString stringWithTestResource:@"HelloWorldLayer.header"]];
     [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
@@ -176,7 +177,8 @@ static const NSString* SDK_PATH =
     XCProject* anotherProject = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
     XCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
-    XCClassDefinition* definition = [XCClassDefinition classDefinitionWithName:@"Person" language:CPlusPlus];
+    SXCClassDefinition* definition =
+        [SXCClassDefinition classDefinitionWithName:@"Person" language:SXCClassDefinitionLanguageCPlusPlus];
     [definition setSource:[NSString stringWithTestResource:@"Person.impl"]];
 
     [anotherGroup addClass:definition toTargets:[anotherProject targets]];
@@ -221,7 +223,7 @@ static const NSString* SDK_PATH =
 {
     NSString* newXibText = @"Don't blow away my contents if I already exists";
     XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
-    [xibDefinition setFileOperationType:XCFileOperationTypeAcceptExisting];
+    [xibDefinition setFileOperationType:SXCFileOperationTypeAcceptExisting];
 
     [group addXib:xibDefinition toTargets:[project targets]];
     [project save];
@@ -236,16 +238,16 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_adding_a_framework_on_the_system_volume
 {
-    XCFrameworkDefinition* frameworkDefinition =
-        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath eventKitUIPath] copyToDestination:NO];
+    SXCFrameworkDefinition* frameworkDefinition =
+        [SXCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath eventKitUIPath] copyToDestination:NO];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 }
 
 - (void)test_allows_adding_a_framework_copying_it_to_the_destination_folder
 {
-    XCFrameworkDefinition* frameworkDefinition =
-        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath coreMidiPath] copyToDestination:YES];
+    SXCFrameworkDefinition* frameworkDefinition =
+        [SXCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath coreMidiPath] copyToDestination:YES];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 }

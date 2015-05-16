@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCFileOperationQueue.h"
+#import "SXCFileOperationQueue.h"
 
-@interface XCFileOperationQueue ()
+@interface SXCFileOperationQueue ()
 
 - (NSString*)destinationPathFor:(NSString*)fileName inProjectDirectory:(NSString*)directory;
 
@@ -23,7 +23,7 @@
 @end
 
 
-@implementation XCFileOperationQueue
+@implementation SXCFileOperationQueue
 
 
 /* ================================================================================================================== */

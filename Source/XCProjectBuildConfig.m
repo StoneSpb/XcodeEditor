@@ -12,7 +12,7 @@
 #import "XCProjectBuildConfig.h"
 
 #import "XCGroup.h"
-#import "XCKeyBuilder.h"
+#import "SXCKeyBuilder.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
 
@@ -86,7 +86,7 @@
 
     dupBuildConfigurationList[@"buildConfigurations"] = dupBuildConfigurations;
 
-    NSString* dupBuildConfigurationListKey = [[XCKeyBuilder createUnique] build];
+    NSString* dupBuildConfigurationListKey = [[SXCKeyBuilder createUnique] build];
 
     project.objects[dupBuildConfigurationListKey] = dupBuildConfigurationList;
 
@@ -177,7 +177,7 @@
 
     buildConfigurationVisitor(dupBuildConfiguration);
 
-    NSString* dupBuildConfigurationKey = [[XCKeyBuilder createUnique] build];
+    NSString* dupBuildConfigurationKey = [[SXCKeyBuilder createUnique] build];
 
     project.objects[dupBuildConfigurationKey] = dupBuildConfiguration;
 

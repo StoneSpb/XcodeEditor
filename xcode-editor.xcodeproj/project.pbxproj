@@ -29,38 +29,38 @@
 		BA79809B196A253223139967 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA798378F006ADD44A37C678 /* InfoPlist.strings */; };
 		BA7980D47618535CEEE56C07 /* SXCXcodeFileType.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798CF27DA49D73EBE0FCB7 /* SXCXcodeFileType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7981663E00E804C25FDA0D /* XCProject.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989AC9710D456572783C7 /* XCProject.m */; };
-		BA7981A76C28C0D8FE7392E0 /* XCClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A9F12459363332BFD04 /* XCClassDefinition.m */; };
+		BA7981A76C28C0D8FE7392E0 /* SXCClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A9F12459363332BFD04 /* SXCClassDefinition.m */; };
 		BA7981FC099C3D8C4BA8E511 /* XCSubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7987AE440FBAAC032785B1 /* XCSubProjectDefinition.m */; };
 		BA7981FF93FAFD6320C739ED /* XCSourceFile.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A848F553CE428B7CC74 /* XCSourceFile.m */; };
 		BA79825A7D7CB5AD4EE31A6C /* XCGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7983FEC190BC062691EA39 /* XCGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA7983A0DEE6E0B98286444A /* XCClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7983A0D40F7D264D8E6DF3 /* XCClassDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA7983A0DEE6E0B98286444A /* SXCClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7983A0D40F7D264D8E6DF3 /* SXCClassDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA79845D705566388D6A74F5 /* XCGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989F085BDB69CB462D203 /* XCGroup.m */; };
 		BA79845EF211493263B4D0FC /* XCTarget.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7982BE32BDDBBC9DA2FDC8 /* XCTarget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7984763E39F64955CFE6F5 /* SXCXcodeMemberType.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798C11E473C251F07B0DAA /* SXCXcodeMemberType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7984F6EE4FA90717414543 /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C57D9B8610BFECB9528 /* XCProject+SubProject.m */; };
-		BA79857B12A10B9BFBF3C929 /* XCAbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798287F70884A45C9F3721 /* XCAbstractDefinition.m */; };
+		BA79857B12A10B9BFBF3C929 /* SXCAbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798287F70884A45C9F3721 /* SXCAbstractDefinition.m */; };
 		BA7985C5136218B0D782F7F1 /* XCProject+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */; };
 		BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */; };
-		BA79861FCDBD84679CA89D9E /* XCKeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */; };
+		BA79861FCDBD84679CA89D9E /* SXCKeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798DB7EBF603A22E7334BF /* SXCKeyBuilder.m */; };
 		BA79862308DF0F7F984AF86E /* XCProjectBuildConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */; };
 		BA798641126C8C9498C21843 /* XCSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B392E07F43F5E0E77FC /* XCSourceFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA79866BA1ACA2933B98F48C /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */; };
+		BA79866BA1ACA2933B98F48C /* SXCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79885862A8419969A4CC7A /* SXCFrameworkDefinition.m */; };
 		BA7986719FB605B7F7698E81 /* SXCXcodeMemberType.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C3E8F2CD550594E7231 /* SXCXcodeMemberType.m */; };
 		BA79868C0786BB13E5C324ED /* XCProject.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988B8FA1C50DE6B1B54D2 /* XCProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA79876598EF30F3EE513484 /* XCFileOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E32B62ACEF1B995F0D3 /* XCFileOperationQueue.m */; };
-		BA7987C8FAAD4E3225D7DDC3 /* XCFileOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798FDE9BAA7D87499853ED /* XCFileOperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA79876598EF30F3EE513484 /* SXCFileOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E32B62ACEF1B995F0D3 /* SXCFileOperationQueue.m */; };
+		BA7987C8FAAD4E3225D7DDC3 /* SXCFileOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798FDE9BAA7D87499853ED /* SXCFileOperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA79881A93B24339436DF2FC /* XCXibDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982A4051493BD524C3BBD /* XCXibDefinition.m */; };
 		BA7988ABB09415FEE5070B38 /* XCXibDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798D221F1008AE859B76B8 /* XCXibDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7988C3E49E2C17AACB9CDC /* SXCXcodeFileType.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982A01773D8163E643FAA /* SXCXcodeFileType.m */; };
 		BA7989692AF001BA1BBEACCF /* XCSourceFileDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798473A7694F9383712D07 /* XCSourceFileDefinition.m */; };
-		BA798A3F4DCBD5DD024B1147 /* XcodeGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79840E5B88656BAAE1D8B5 /* XcodeGroupMember.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA798AD506D19B5D3FB6DE4E /* XCAbstractDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79837129D1D730443959A2 /* XCAbstractDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA798A3F4DCBD5DD024B1147 /* SXCXcodeGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79840E5B88656BAAE1D8B5 /* SXCXcodeGroupMember.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA798AD506D19B5D3FB6DE4E /* SXCAbstractDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79837129D1D730443959A2 /* SXCAbstractDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA798AECC575AEE83D96D580 /* NSString+TestResource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798233F677AB6DE9FB37FC /* NSString+TestResource.m */; };
 		BA798BD3214388015EAFDDFB /* XCTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798ABFC33DC1AE014D76D6 /* XCTarget.m */; };
 		BA798BE4876F847D0F1BA266 /* XCSourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798C2F90A12BFEE77EFA5D /* XCSourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA798DC320D5F6F188C112B3 /* XCKeyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798909AC4D1FCE033E64C5 /* XCKeyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA798EFC5F24AC9FD857373C /* XCFrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA798F131E3B0412BEE23CA3 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79888A08A5739C728633D2 /* XcodeEditor.h */; };
+		BA798DC320D5F6F188C112B3 /* SXCKeyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798909AC4D1FCE033E64C5 /* SXCKeyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA798EFC5F24AC9FD857373C /* SXCFrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7986BC9EE998925B797690 /* SXCFrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA798F131E3B0412BEE23CA3 /* SXCXcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79888A08A5739C728633D2 /* SXCXcodeEditor.h */; };
 		BA798F6617C56888653CE018 /* XcodeEditor-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = BA798CECA2420D48B499842E /* XcodeEditor-Prefix.pch */; };
 /* End PBXBuildFile section */
 
@@ -94,17 +94,17 @@
 		6BD8982D14EA2441007875F4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		BA798233F677AB6DE9FB37FC /* NSString+TestResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TestResource.m"; sourceTree = "<group>"; };
 		BA798257DC8C1D51244A87F2 /* expanz-iOS-SDK.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "expanz-iOS-SDK.zip"; sourceTree = "<group>"; };
-		BA798287F70884A45C9F3721 /* XCAbstractDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCAbstractDefinition.m; sourceTree = "<group>"; };
+		BA798287F70884A45C9F3721 /* SXCAbstractDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCAbstractDefinition.m; sourceTree = "<group>"; };
 		BA7982A01773D8163E643FAA /* SXCXcodeFileType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCXcodeFileType.m; sourceTree = "<group>"; };
 		BA7982A4051493BD524C3BBD /* XCXibDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCXibDefinition.m; sourceTree = "<group>"; };
 		BA7982BE32BDDBBC9DA2FDC8 /* XCTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTarget.h; sourceTree = "<group>"; };
 		BA7982C1A359AA930F934231 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
-		BA79837129D1D730443959A2 /* XCAbstractDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCAbstractDefinition.h; sourceTree = "<group>"; };
-		BA7983A0D40F7D264D8E6DF3 /* XCClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCClassDefinition.h; sourceTree = "<group>"; };
+		BA79837129D1D730443959A2 /* SXCAbstractDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCAbstractDefinition.h; sourceTree = "<group>"; };
+		BA7983A0D40F7D264D8E6DF3 /* SXCClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCClassDefinition.h; sourceTree = "<group>"; };
 		BA7983A401A60AA073A26789 /* XCSubProjectDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinitionTests.m; sourceTree = "<group>"; };
 		BA7983F13EF969BF5E4135BB /* XcodeEditor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "XcodeEditor-Info.plist"; sourceTree = "<group>"; };
 		BA7983FEC190BC062691EA39 /* XCGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCGroup.h; sourceTree = "<group>"; };
-		BA79840E5B88656BAAE1D8B5 /* XcodeGroupMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeGroupMember.h; sourceTree = "<group>"; };
+		BA79840E5B88656BAAE1D8B5 /* SXCXcodeGroupMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCXcodeGroupMember.h; sourceTree = "<group>"; };
 		BA7984685319A7BB1B37DBE9 /* XCClassDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCClassDefinitionTests.m; sourceTree = "<group>"; };
 		BA798473A7694F9383712D07 /* XCSourceFileDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSourceFileDefinition.m; sourceTree = "<group>"; };
 		BA79848C44BAD3669D8B787E /* Person.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = Person.impl; sourceTree = "<group>"; };
@@ -113,13 +113,13 @@
 		BA7985E1B4262B71CC38472A /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = Source/Tests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCProject+SubProject.h"; sourceTree = "<group>"; };
 		BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProjectBuildConfig.m; sourceTree = "<group>"; };
-		BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFrameworkDefinition.h; sourceTree = "<group>"; };
+		BA7986BC9EE998925B797690 /* SXCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCFrameworkDefinition.h; sourceTree = "<group>"; };
 		BA7987AE440FBAAC032785B1 /* XCSubProjectDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinition.m; sourceTree = "<group>"; };
-		BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFrameworkDefinition.m; sourceTree = "<group>"; };
-		BA79888A08A5739C728633D2 /* XcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
+		BA79885862A8419969A4CC7A /* SXCFrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCFrameworkDefinition.m; sourceTree = "<group>"; };
+		BA79888A08A5739C728633D2 /* SXCXcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCXcodeEditor.h; sourceTree = "<group>"; };
 		BA7988B8FA1C50DE6B1B54D2 /* XCProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCProject.h; sourceTree = "<group>"; };
 		BA798903FC8864C4CB08B7FF /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
-		BA798909AC4D1FCE033E64C5 /* XCKeyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCKeyBuilder.h; sourceTree = "<group>"; };
+		BA798909AC4D1FCE033E64C5 /* SXCKeyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCKeyBuilder.h; sourceTree = "<group>"; };
 		BA798924D39B66695026C637 /* goat-funny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goat-funny.png"; sourceTree = "<group>"; };
 		BA798943BA7D1C740F0A098F /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
 		BA7989499B6F59EEC2E1AA41 /* XCGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCGroupTests.m; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		BA7989AC9710D456572783C7 /* XCProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProject.m; sourceTree = "<group>"; };
 		BA7989F085BDB69CB462D203 /* XCGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCGroup.m; sourceTree = "<group>"; };
 		BA798A848F553CE428B7CC74 /* XCSourceFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSourceFile.m; sourceTree = "<group>"; };
-		BA798A9F12459363332BFD04 /* XCClassDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCClassDefinition.m; sourceTree = "<group>"; };
+		BA798A9F12459363332BFD04 /* SXCClassDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCClassDefinition.m; sourceTree = "<group>"; };
 		BA798ABFC33DC1AE014D76D6 /* XCTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTarget.m; sourceTree = "<group>"; };
 		BA798B07E98D7BCE4145F363 /* NSString+TestResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TestResource.h"; sourceTree = "<group>"; };
 		BA798B392E07F43F5E0E77FC /* XCSourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCSourceFile.h; sourceTree = "<group>"; };
@@ -145,12 +145,12 @@
 		BA798CFD524E5A3CF155C816 /* XCProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProjectTests.m; sourceTree = "<group>"; };
 		BA798D221F1008AE859B76B8 /* XCXibDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCXibDefinition.h; sourceTree = "<group>"; };
 		BA798D6F34B9A560E3D689B3 /* SXCSourceFileTypeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCSourceFileTypeTests.m; sourceTree = "<group>"; };
-		BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCKeyBuilder.m; sourceTree = "<group>"; };
+		BA798DB7EBF603A22E7334BF /* SXCKeyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCKeyBuilder.m; sourceTree = "<group>"; };
 		BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCProjectBuildConfig.h; sourceTree = "<group>"; };
-		BA798E32B62ACEF1B995F0D3 /* XCFileOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFileOperationQueue.m; sourceTree = "<group>"; };
+		BA798E32B62ACEF1B995F0D3 /* SXCFileOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXCFileOperationQueue.m; sourceTree = "<group>"; };
 		BA798E7947765A032AB118BA /* ESA_Sales_Foobar_ViewController.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = ESA_Sales_Foobar_ViewController.header; sourceTree = "<group>"; };
 		BA798EC5D7AFB1BC79B1934E /* ESA_Sales_Foobar_ViewController.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = ESA_Sales_Foobar_ViewController.impl; sourceTree = "<group>"; };
-		BA798FDE9BAA7D87499853ED /* XCFileOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFileOperationQueue.h; sourceTree = "<group>"; };
+		BA798FDE9BAA7D87499853ED /* SXCFileOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXCFileOperationQueue.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,14 +253,14 @@
 			children = (
 				BA79829560E06C6EF29DAB81 /* Resources */,
 				BA798ABC7CC2DB8B6994774C /* Utils */,
-				BA79837129D1D730443959A2 /* XCAbstractDefinition.h */,
-				BA798287F70884A45C9F3721 /* XCAbstractDefinition.m */,
-				BA7983A0D40F7D264D8E6DF3 /* XCClassDefinition.h */,
-				BA798A9F12459363332BFD04 /* XCClassDefinition.m */,
-				BA798FDE9BAA7D87499853ED /* XCFileOperationQueue.h */,
-				BA798E32B62ACEF1B995F0D3 /* XCFileOperationQueue.m */,
-				BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */,
-				BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */,
+				BA79837129D1D730443959A2 /* SXCAbstractDefinition.h */,
+				BA798287F70884A45C9F3721 /* SXCAbstractDefinition.m */,
+				BA7983A0D40F7D264D8E6DF3 /* SXCClassDefinition.h */,
+				BA798A9F12459363332BFD04 /* SXCClassDefinition.m */,
+				BA798FDE9BAA7D87499853ED /* SXCFileOperationQueue.h */,
+				BA798E32B62ACEF1B995F0D3 /* SXCFileOperationQueue.m */,
+				BA7986BC9EE998925B797690 /* SXCFrameworkDefinition.h */,
+				BA79885862A8419969A4CC7A /* SXCFrameworkDefinition.m */,
 				BA7983FEC190BC062691EA39 /* XCGroup.h */,
 				BA7989F085BDB69CB462D203 /* XCGroup.m */,
 				BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */,
@@ -279,8 +279,8 @@
 				BA798ABFC33DC1AE014D76D6 /* XCTarget.m */,
 				BA798D221F1008AE859B76B8 /* XCXibDefinition.h */,
 				BA7982A4051493BD524C3BBD /* XCXibDefinition.m */,
-				BA79888A08A5739C728633D2 /* XcodeEditor.h */,
-				BA79840E5B88656BAAE1D8B5 /* XcodeGroupMember.h */,
+				BA79888A08A5739C728633D2 /* SXCXcodeEditor.h */,
+				BA79840E5B88656BAAE1D8B5 /* SXCXcodeGroupMember.h */,
 				BA798C11E473C251F07B0DAA /* SXCXcodeMemberType.h */,
 				BA798C3E8F2CD550594E7231 /* SXCXcodeMemberType.m */,
 				BA798CF27DA49D73EBE0FCB7 /* SXCXcodeFileType.h */,
@@ -329,8 +329,8 @@
 		BA798ABC7CC2DB8B6994774C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BA798909AC4D1FCE033E64C5 /* XCKeyBuilder.h */,
-				BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */,
+				BA798909AC4D1FCE033E64C5 /* SXCKeyBuilder.h */,
+				BA798DB7EBF603A22E7334BF /* SXCKeyBuilder.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,23 +343,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7980D47618535CEEE56C07 /* SXCXcodeFileType.h in Headers */,
-				BA798DC320D5F6F188C112B3 /* XCKeyBuilder.h in Headers */,
-				BA7983A0DEE6E0B98286444A /* XCClassDefinition.h in Headers */,
+				BA798DC320D5F6F188C112B3 /* SXCKeyBuilder.h in Headers */,
+				BA7983A0DEE6E0B98286444A /* SXCClassDefinition.h in Headers */,
 				BA798641126C8C9498C21843 /* XCSourceFile.h in Headers */,
 				BA798F6617C56888653CE018 /* XcodeEditor-Prefix.pch in Headers */,
 				BA7984763E39F64955CFE6F5 /* SXCXcodeMemberType.h in Headers */,
 				BA79868C0786BB13E5C324ED /* XCProject.h in Headers */,
-				BA798EFC5F24AC9FD857373C /* XCFrameworkDefinition.h in Headers */,
-				BA798A3F4DCBD5DD024B1147 /* XcodeGroupMember.h in Headers */,
-				BA798AD506D19B5D3FB6DE4E /* XCAbstractDefinition.h in Headers */,
-				BA798F131E3B0412BEE23CA3 /* XcodeEditor.h in Headers */,
+				BA798EFC5F24AC9FD857373C /* SXCFrameworkDefinition.h in Headers */,
+				BA798A3F4DCBD5DD024B1147 /* SXCXcodeGroupMember.h in Headers */,
+				BA798AD506D19B5D3FB6DE4E /* SXCAbstractDefinition.h in Headers */,
+				BA798F131E3B0412BEE23CA3 /* SXCXcodeEditor.h in Headers */,
 				BA7985C5136218B0D782F7F1 /* XCProject+SubProject.h in Headers */,
 				BA79825A7D7CB5AD4EE31A6C /* XCGroup.h in Headers */,
 				BA79845EF211493263B4D0FC /* XCTarget.h in Headers */,
 				BA798BE4876F847D0F1BA266 /* XCSourceFileDefinition.h in Headers */,
 				BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */,
 				BA7988ABB09415FEE5070B38 /* XCXibDefinition.h in Headers */,
-				BA7987C8FAAD4E3225D7DDC3 /* XCFileOperationQueue.h in Headers */,
+				BA7987C8FAAD4E3225D7DDC3 /* SXCFileOperationQueue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,18 +486,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA79845D705566388D6A74F5 /* XCGroup.m in Sources */,
-				BA79857B12A10B9BFBF3C929 /* XCAbstractDefinition.m in Sources */,
-				BA79861FCDBD84679CA89D9E /* XCKeyBuilder.m in Sources */,
+				BA79857B12A10B9BFBF3C929 /* SXCAbstractDefinition.m in Sources */,
+				BA79861FCDBD84679CA89D9E /* SXCKeyBuilder.m in Sources */,
 				BA7981FF93FAFD6320C739ED /* XCSourceFile.m in Sources */,
 				BA7989692AF001BA1BBEACCF /* XCSourceFileDefinition.m in Sources */,
 				BA79881A93B24339436DF2FC /* XCXibDefinition.m in Sources */,
 				BA7988C3E49E2C17AACB9CDC /* SXCXcodeFileType.m in Sources */,
 				BA798BD3214388015EAFDDFB /* XCTarget.m in Sources */,
-				BA79866BA1ACA2933B98F48C /* XCFrameworkDefinition.m in Sources */,
+				BA79866BA1ACA2933B98F48C /* SXCFrameworkDefinition.m in Sources */,
 				BA7981FC099C3D8C4BA8E511 /* XCSubProjectDefinition.m in Sources */,
 				BA79862308DF0F7F984AF86E /* XCProjectBuildConfig.m in Sources */,
-				BA7981A76C28C0D8FE7392E0 /* XCClassDefinition.m in Sources */,
-				BA79876598EF30F3EE513484 /* XCFileOperationQueue.m in Sources */,
+				BA7981A76C28C0D8FE7392E0 /* SXCClassDefinition.m in Sources */,
+				BA79876598EF30F3EE513484 /* SXCFileOperationQueue.m in Sources */,
 				BA7984F6EE4FA90717414543 /* XCProject+SubProject.m in Sources */,
 				BA7986719FB605B7F7698E81 /* SXCXcodeMemberType.m in Sources */,
 				BA7981663E00E804C25FDA0D /* XCProject.m in Sources */,

@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCAbstractDefinition.h"
+#import "SXCAbstractDefinition.h"
 
-@implementation XCAbstractDefinition
+@implementation SXCAbstractDefinition
 
 @synthesize fileOperationType = _fileOperationType;
 
@@ -24,7 +24,7 @@
     self = [super init];
     if (self)
     {
-        _fileOperationType = XCFileOperationTypeOverwrite;
+        _fileOperationType = SXCFileOperationTypeOverwrite;
     }
     return self;
 }

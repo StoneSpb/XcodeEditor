@@ -11,10 +11,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XCAbstractDefinition.h"
+#import "SXCAbstractDefinition.h"
 #import "SXCXcodeFileType.h"
 
-@interface XCSourceFileDefinition : XCAbstractDefinition
+@interface XCSourceFileDefinition : SXCAbstractDefinition
 {
     NSString* _sourceFileName;
     SXCXcodeFileType _type;
