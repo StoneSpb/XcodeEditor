@@ -22,7 +22,7 @@
 @class SXCSubProjectDefinition;
 @class SXCTarget;
 
-NSString* const SXCProjectNotFoundException;
+extern NSString* const SXCProjectNotFoundException;
 
 @interface SXCProject : NSObject
 {

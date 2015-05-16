@@ -17,6 +17,8 @@
 #import "SXCSourceFile.h"
 #import "SXCTarget.h"
 
+NSString* const SXCProjectNotFoundException = @"SXCProjectNotFoundException";
+
 @implementation SXCProject
 
 @synthesize fileOperationQueue = _fileOperationQueue;
