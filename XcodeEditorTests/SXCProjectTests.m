@@ -9,27 +9,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCProject.h"
+#import "SXCProject.h"
 
 #import <XCTest/XCTest.h>
 
-#import "XCSourceFile.h"
-#import "XCTarget.h"
-#import "XCGroup.h"
+#import "SXCSourceFile.h"
+#import "SXCTarget.h"
+#import "SXCGroup.h"
 
-@interface XCProjectTests : XCTestCase
+@interface SXCProjectTests : XCTestCase
 
 @end
 
-@implementation XCProjectTests
+@implementation SXCProjectTests
 {
-    __block XCProject* project;
+    __block SXCProject* project;
 }
 
 /* ================================================================================================================== */
 - (void)setUp
 {
-    project = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests"];
+    project = [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests"];
 }
 
 /* ================================================================================================================== */
@@ -41,7 +41,7 @@
     NSLog(@"Headers: %@", headerFiles);
 
     XCTAssertTrue([headerFiles count] == 18);
-    for (XCSourceFile* file in headerFiles)
+    for (SXCSourceFile* file in headerFiles)
     {
         NSLog(@"File: %@", [file description]);
     }
@@ -78,7 +78,7 @@
 {
     NSArray* groups = [project groups];
 
-    for (XCGroup* group in groups)
+    for (SXCGroup* group in groups)
     {
         NSLog(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
         for (id <SXCXcodeGroupMember> member  in [group members])
@@ -93,14 +93,14 @@
 
 - (void)test_provides_access_to_the_root_top_level_group
 {
-    XCGroup* rootGroup = [project rootGroup];
+    SXCGroup* rootGroup = [project rootGroup];
     NSLog(@"Here the group: %@", rootGroup);
     XCTAssertFalse([rootGroup.members count] == 0);
 }
 
 - (void)test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group
 {
-    XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
+    SXCGroup* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
     XCTAssertNotNil(group);
     NSLog(@"Group: %@", group);
 }
@@ -111,14 +111,14 @@
 - (void)test_able_to_list_the_targets_in_an_xcode_project
 {
     NSArray* targets = [project targets];
-    for (XCTarget* target in [project targets])
+    for (SXCTarget* target in [project targets])
     {
         NSLog(@"%@", target);
     }
     XCTAssertNotNil(targets);
     XCTAssertFalse([targets count] == 0);
 
-    for (XCTarget* target in targets)
+    for (SXCTarget* target in targets)
     {
         NSArray* members = [target members];
         NSLog(@"Members: %@", members);

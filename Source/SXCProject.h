@@ -15,16 +15,16 @@
 #import "SXCXcodeFileType.h"
 
 @class SXCClassDefinition;
-@class XCGroup;
+@class SXCGroup;
 @class SXCFileOperationQueue;
-@class XCSourceFile;
-@class XCTarget;
-@class XCSubProjectDefinition;
-@class XCProjectBuildConfig;
+@class SXCSourceFile;
+@class SXCTarget;
+@class SXCSubProjectDefinition;
+@class SXCProjectBuildConfig;
 
-NSString* const XCProjectNotFoundException;
+NSString* const SXCProjectNotFoundException;
 
-@interface XCProject : NSObject
+@interface SXCProject : NSObject
 {
 @protected
     SXCFileOperationQueue* _fileOperationQueue;
@@ -63,13 +63,13 @@ NSString* const XCProjectNotFoundException;
 /**
 * Returns the project file with the specified key, or nil.
 */
-- (XCSourceFile*)fileWithKey:(NSString*)key;
+- (SXCSourceFile*)fileWithKey:(NSString*)key;
 
 /**
 * Returns the project file with the specified name, or nil. If more than one project file matches the specified name,
 * which one is returned is undefined.
 */
-- (XCSourceFile*)fileWithName:(NSString*)name;
+- (SXCSourceFile*)fileWithName:(NSString*)name;
 
 /**
 * Returns all header files in the project, as an array of `XCSourceFile` objects.
@@ -106,7 +106,7 @@ NSString* const XCProjectNotFoundException;
 /**
  * Returns the root (top-level) group.
  */
-- (XCGroup*)rootGroup;
+- (SXCGroup*)rootGroup;
 
 /**
  * Returns the root (top-level) groups, if there are multiple. An array of rootGroup if there is only one.
@@ -116,22 +116,22 @@ NSString* const XCProjectNotFoundException;
 /**
 * Returns the group with the given key, or nil.
 */
-- (XCGroup*)groupWithKey:(NSString*)key;
+- (SXCGroup*)groupWithKey:(NSString*)key;
 
 /**
  * Returns the group with the specified display name path - the directory relative to the root group. Eg Source/Main
  */
-- (XCGroup*)groupWithPathFromRoot:(NSString*)path;
+- (SXCGroup*)groupWithPathFromRoot:(NSString*)path;
 
 /**
 * Returns the parent group for the group or file with the given key;
 */
-- (XCGroup*)groupForGroupMemberWithKey:(NSString*)key;
+- (SXCGroup*)groupForGroupMemberWithKey:(NSString*)key;
 
 /**
  * Returns the parent group for the group or file with the source file
  */
-- (XCGroup*)groupWithSourceFile:(XCSourceFile*)sourceFile;
+- (SXCGroup*)groupWithSourceFile:(SXCSourceFile*)sourceFile;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Targets
@@ -143,7 +143,7 @@ NSString* const XCProjectNotFoundException;
 /**
 * Returns the target with the specified name, or nil. 
 */
-- (XCTarget*)targetWithName:(NSString*)name;
+- (SXCTarget*)targetWithName:(NSString*)name;
 
 #pragma mark Configurations
 
@@ -153,7 +153,7 @@ NSString* const XCProjectNotFoundException;
 - (NSDictionary*)configurations;
 - (NSDictionary*)configurationWithName:(NSString*)name;
 
-- (XCProjectBuildConfig *)defaultConfiguration;
+- (SXCProjectBuildConfig *)defaultConfiguration;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Saving

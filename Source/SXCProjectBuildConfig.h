@@ -11,12 +11,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class XCProject;
+@class SXCProject;
 
-@interface XCProjectBuildConfig : NSObject
+@interface SXCProjectBuildConfig : NSObject
 {
 @private
-    __weak XCProject* _project;
+    __weak SXCProject* _project;
     NSString* _key;
 
     NSMutableDictionary* _buildSettings;
@@ -25,9 +25,9 @@
 
 @property(nonatomic, readonly) NSDictionary* specifiedBuildSettings;
 
-+ (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project;
++ (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(SXCProject*)project;
 
-- (instancetype)initWithProject:(XCProject*)project key:(NSString*)key;
+- (instancetype)initWithProject:(SXCProject*)project key:(NSString*)key;
 
 - (void)addBuildSettings:(NSDictionary*)buildSettings;
 - (void)addOrReplaceSetting:(id <NSCopying>)setting forKey:(NSString*)key;
@@ -35,7 +35,7 @@
 - (id <NSCopying>)valueForKey:(NSString*)key;
 
 + (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey
-                                           inProject:(XCProject*)project
+                                           inProject:(SXCProject*)project
                        withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor;
 
 @end

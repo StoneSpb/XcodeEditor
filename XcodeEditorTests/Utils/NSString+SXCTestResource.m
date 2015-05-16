@@ -9,11 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "NSString+TestResource.h"
+#import "NSString+SXCTestResource.h"
 
-@implementation NSString (TestResource)
+@implementation NSString (SXCTestResource)
 
-+ (NSString*)stringWithTestResource:(NSString*)resourceName
++ (NSString*)sxc_stringWithTestResource:(NSString*)resourceName
 {
     NSString* filePath = [@"/tmp/XcodeEditorTests" stringByAppendingPathComponent:resourceName];
     NSError* error = nil;

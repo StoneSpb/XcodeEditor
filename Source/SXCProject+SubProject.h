@@ -11,15 +11,15 @@
 
 #import <Foundation/Foundation.h>
 
-#import "XCProject.h"
+#import "SXCProject.h"
 
-@interface XCProject (SubProject)
+@interface SXCProject (SubProject)
 
 - (NSString *)referenceProxyKeyForName:(NSString *)name;
 
 - (NSArray *)buildProductsForTargets:(NSString *)xcodeprojKey;
 
-- (void)addAsTargetDependency:(XCSubProjectDefinition *)xcodeprojDefinition toTargets:(NSArray *)targets;
+- (void)addAsTargetDependency:(SXCSubProjectDefinition *)xcodeprojDefinition toTargets:(NSArray *)targets;
 
 - (NSArray *)keysForProjectObjectsOfType:(SXCXcodeMemberType)memberType
                           withIdentifier:(NSString *)identifier
@@ -29,7 +29,7 @@
 - (NSMutableDictionary *)PBXProjectDict;
 
 - (void)removeProxies:(NSString *)xcodeprojKey;
-- (void)addProxies:(XCSubProjectDefinition *)xcodeproj;
+- (void)addProxies:(SXCSubProjectDefinition *)xcodeproj;
 
 - (void)removeFromProjectReferences:(NSString *)key forProductsGroup:(NSString *)productsGroupKey;
 

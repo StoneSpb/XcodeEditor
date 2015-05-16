@@ -9,28 +9,28 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCGroup.h"
+#import "SXCGroup.h"
 
 #import "SXCFrameworkDefinition.h"
-#import "XCTarget.h"
+#import "SXCTarget.h"
 #import "SXCFileOperationQueue.h"
-#import "XCXibDefinition.h"
-#import "XCSourceFile.h"
-#import "XCProject.h"
+#import "SXCXibDefinition.h"
+#import "SXCSourceFile.h"
+#import "SXCProject.h"
 #import "SXCClassDefinition.h"
 #import "Utils/SXCKeyBuilder.h"
-#import "XCSourceFileDefinition.h"
-#import "XCSubProjectDefinition.h"
-#import "XCProject+SubProject.h"
+#import "SXCSourceFileDefinition.h"
+#import "SXCSubProjectDefinition.h"
+#import "SXCProject+SubProject.h"
 
-@implementation XCGroup
+@implementation SXCGroup
 
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
 //-------------------------------------------------------------------------------------------
 
-+ (instancetype)groupWithProject:(XCProject*)project
++ (instancetype)groupWithProject:(SXCProject*)project
                              key:(NSString*)key
                            alias:(NSString*)alias
                             path:(NSString*)path
@@ -43,7 +43,7 @@
 #pragma mark - Initialization & Destruction
 //-------------------------------------------------------------------------------------------
 
-- (instancetype)initWithProject:(XCProject*)project
+- (instancetype)initWithProject:(SXCProject*)project
                             key:(NSString*)key
                           alias:(NSString*)alias
                            path:(NSString*)path
@@ -87,13 +87,13 @@
 
     [_project.objects removeObjectForKey:_key];
 
-    for (XCTarget* target in [_project targets])
+    for (SXCTarget* target in [_project targets])
     {
         [target removeMembersWithKeys:[self recursiveMembers]];
     }
 }
 
-- (XCGroup*)parentGroup
+- (SXCGroup*)parentGroup
 {
     return [_project groupForGroupMemberWithKey:_key];
 }
@@ -141,7 +141,7 @@
 - (void)addClass:(SXCClassDefinition*)classDefinition toTargets:(NSArray*)targets
 {
     [self addClass:classDefinition];
-    XCSourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
+    SXCSourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
@@ -194,7 +194,7 @@
 - (void)addFramework:(SXCFrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets
 {
     [self addFramework:frameworkDefinition];
-    XCSourceFile* frameworkSourceRef = (XCSourceFile*) [self memberWithDisplayName:[frameworkDefinition name]];
+    SXCSourceFile* frameworkSourceRef = (SXCSourceFile*) [self memberWithDisplayName:[frameworkDefinition name]];
     [self addSourceFile:frameworkSourceRef toTargets:targets];
 }
 
@@ -213,7 +213,7 @@
 }
 
 
-- (XCGroup*)addGroupWithPath:(NSString*)path
+- (SXCGroup*)addGroupWithPath:(NSString*)path
 {
     NSString* groupKeyPath = self.pathRelativeToProjectRoot
                                  ? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path]
@@ -238,7 +238,7 @@
         }
     }
 
-    XCGroup* group = [[XCGroup alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil];
+    SXCGroup* group = [[SXCGroup alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil];
     NSDictionary* groupDict = [group asDictionary];
 
     NSMutableDictionary* objects = _project.objects;
@@ -252,7 +252,7 @@
     return group;
 }
 
-- (void)addSourceFile:(XCSourceFileDefinition*)sourceFileDefinition
+- (void)addSourceFile:(SXCSourceFileDefinition*)sourceFileDefinition
 {
     [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName]
                          contents:[sourceFileDefinition data]
@@ -261,7 +261,7 @@
     _project.objects[_key] = [self asDictionary];
 }
 
-- (void)addXib:(XCXibDefinition*)xibDefinition
+- (void)addXib:(SXCXibDefinition*)xibDefinition
 {
     [self makeGroupMemberWithName:[xibDefinition xibFileName]
                          contents:[xibDefinition content]
@@ -270,16 +270,16 @@
     _project.objects[_key] = [self asDictionary];
 }
 
-- (void)addXib:(XCXibDefinition*)xibDefinition toTargets:(NSArray*)targets
+- (void)addXib:(SXCXibDefinition*)xibDefinition toTargets:(NSArray*)targets
 {
     [self addXib:xibDefinition];
-    XCSourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
+    SXCSourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
 
 // adds an xcodeproj as a subproject of the current project.
-- (void)addSubProject:(XCSubProjectDefinition*)projectDefinition
+- (void)addSubProject:(SXCSubProjectDefinition*)projectDefinition
 {
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
     [projectDefinition setFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
@@ -301,13 +301,13 @@
 
 // adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
 // to targets.
-- (void)addSubProject:(XCSubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets
+- (void)addSubProject:(SXCSubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets
 {
     [self addSubProject:projectDefinition];
 
     // add subproject's build products to targets (does not add the subproject's test bundle)
     NSArray* buildProductFiles = [_project buildProductsForTargets:[projectDefinition projectKey]];
-    for (XCSourceFile* file in buildProductFiles)
+    for (SXCSourceFile* file in buildProductFiles)
     {
         [self addSourceFile:file toTargets:targets];
     }
@@ -316,7 +316,7 @@
 }
 
 // removes an xcodeproj from the current project.
-- (void)removeSubProject:(XCSubProjectDefinition*)projectDefinition
+- (void)removeSubProject:(SXCSubProjectDefinition*)projectDefinition
 {
     if (projectDefinition == nil)
     {
@@ -350,7 +350,7 @@
     [_project removeTargetDependencies:[projectDefinition name]];
 }
 
-- (void)removeSubProject:(XCSubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets
+- (void)removeSubProject:(SXCSubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets
 {
     if (projectDefinition == nil)
     {
@@ -415,7 +415,7 @@
         if (type == SXCXcodeMemberTypePBXGroup ||
             type == SXCXcodeMemberTypePBXVariantGroup)
         {
-            XCGroup* group = [_project groupWithKey:childKey];
+            SXCGroup* group = [_project groupWithKey:childKey];
             NSArray* groupChildren = [group recursiveMembers];
             [recursiveMembers addObjectsFromArray:groupChildren];
         }
@@ -438,7 +438,7 @@
         if (groupMemberType == SXCXcodeMemberTypePBXGroup ||
             groupMemberType == SXCXcodeMemberTypePBXVariantGroup)
         {
-            XCGroup* group = (XCGroup*) groupMember;
+            SXCGroup* group = (SXCGroup*) groupMember;
             [arrayOfBuildFileKeys addObjectsFromArray:[group buildFileKeys]];
         }
         else if (groupMemberType == SXCXcodeMemberTypePBXFileReference)
@@ -503,7 +503,7 @@
     if (_pathRelativeToProjectRoot == nil)
     {
         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-        XCGroup* group = nil;
+        SXCGroup* group = nil;
         NSString* key = [_key copy];
 
         while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil)
@@ -562,7 +562,7 @@
              fileOperationStyle:(SXCFileOperationType)fileOperationStyle
 {
     NSString* filePath;
-    XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
+    SXCSourceFile* currentSourceFile = (SXCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil)
     {
         NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
@@ -611,7 +611,7 @@
                            type:(SXCXcodeFileType)type
              fileOperationStyle:(SXCFileOperationType)fileOperationStyle
 {
-    XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
+    SXCSourceFile* currentSourceFile = (SXCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil)
     {
         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
@@ -622,7 +622,7 @@
 }
 
 // makes a new group called Products and returns its key
-- (NSString*)makeProductsGroup:(XCSubProjectDefinition*)xcodeprojDefinition
+- (NSString*)makeProductsGroup:(SXCSubProjectDefinition*)xcodeprojDefinition
 {
     NSMutableArray* children = [NSMutableArray array];
     NSString* uniquer = @"";
@@ -632,14 +632,14 @@
         uniquer = [uniquer stringByAppendingString:productName];
     }
     NSString* productKey = [[SXCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
-    XCGroup* productsGroup = [XCGroup groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
+    SXCGroup* productsGroup = [SXCGroup groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
     _project.objects[productKey] = [productsGroup asDictionary];
     return productKey;
 }
 
 // makes a new Products group (by calling the method above), makes a new projectReferences array for it and
 // then adds it to the PBXProject object
-- (void)addProductsGroupToProject:(XCSubProjectDefinition*)xcodeprojDefinition
+- (void)addProductsGroupToProject:(SXCSubProjectDefinition*)xcodeprojDefinition
 {
     NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
 
@@ -771,9 +771,9 @@
     return [obj[@"isa"] sxc_asMemberType];
 }
 
-- (void)addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets
+- (void)addSourceFile:(SXCSourceFile*)sourceFile toTargets:(NSArray*)targets
 {
-    for (XCTarget* target in targets)
+    for (SXCTarget* target in targets)
     {
         [target addMember:sourceFile];
     }

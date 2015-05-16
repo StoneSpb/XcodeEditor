@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCXibDefinition.h"
+#import "SXCXibDefinition.h"
 
-@implementation XCXibDefinition
+@implementation SXCXibDefinition
 
 @synthesize name = _name;
 @synthesize content = _content;

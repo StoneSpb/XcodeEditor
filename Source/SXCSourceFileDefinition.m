@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCSourceFileDefinition.h"
+#import "SXCSourceFileDefinition.h"
 
-@implementation XCSourceFileDefinition
+@implementation SXCSourceFileDefinition
 
 @synthesize sourceFileName = _sourceFileName;
 @synthesize type = _type;

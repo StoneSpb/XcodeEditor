@@ -14,16 +14,16 @@
 #import "SXCXcodeGroupMember.h"
 #import "SXCXcodeFileType.h"
 
-@class XCProject;
+@class SXCProject;
 
 /**
 * Represents a file resource in an xcode project.
 */
-@interface XCSourceFile : NSObject<SXCXcodeGroupMember>
+@interface SXCSourceFile : NSObject<SXCXcodeGroupMember>
 {
 
 @private
-    XCProject *_project;
+    SXCProject *_project;
 
     NSNumber *_isBuildFile;
     NSString *_buildFileKey;
@@ -40,7 +40,7 @@
 @property (nonatomic, strong, readonly) NSString *sourceTree;
 @property (nonatomic, strong) NSString *path;
 
-+ (instancetype)sourceFileWithProject:(XCProject *)project
++ (instancetype)sourceFileWithProject:(SXCProject *)project
                                   key:(NSString *)key
                                  type:(SXCXcodeFileType)type
                                  name:(NSString *)name

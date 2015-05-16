@@ -9,18 +9,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCSubProjectDefinition.h"
+#import "SXCSubProjectDefinition.h"
 
-#import "XCProject.h"
-#import "XCProject+SubProject.h"
+#import "SXCProject.h"
+#import "SXCProject+SubProject.h"
 
-@interface XCSubProjectDefinition ()
+@interface SXCSubProjectDefinition ()
 
 @property (nonatomic, strong, readwrite) NSString *relativePath;
 
 @end
 
-@implementation XCSubProjectDefinition
+@implementation SXCSubProjectDefinition
 
 @synthesize name = _name;
 @synthesize path = _path;
@@ -38,7 +38,7 @@
 
 + (instancetype)subProjectDefinitionWithName:(NSString *)name
                                         path:(NSString *)path
-                               parentProject:(XCProject *)parentProject
+                               parentProject:(SXCProject *)parentProject
 {
     return [[self alloc] initWithName:name path:path parentProject:parentProject];
 }
@@ -50,7 +50,7 @@
 
 // Note - _path is most often going to be an absolute path.  The method pathRelativeToProjectRoot below should be
 // used to get the form that's stored in the main project file.
-- (instancetype)initWithName:(NSString *)name path:(NSString *)path parentProject:(XCProject *)parentProject
+- (instancetype)initWithName:(NSString *)name path:(NSString *)path parentProject:(SXCProject *)parentProject
 {
     self = [super init];
     if (self) {
@@ -58,7 +58,7 @@
         _path = [path copy];
         _type = SXCXcodeFileTypeXcodeProject;
         _parentProject = parentProject;
-        _subProject = [XCProject projectWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
+        _subProject = [SXCProject projectWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
     }
     return self;
 }

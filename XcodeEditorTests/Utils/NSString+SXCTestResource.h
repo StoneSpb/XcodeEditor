@@ -12,8 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (TestResource)
+@interface NSString (SXCTestResource)
 
-+ (NSString*)stringWithTestResource:(NSString*)resourceName;
++ (NSString*)sxc_stringWithTestResource:(NSString*)resourceName;
 
 @end

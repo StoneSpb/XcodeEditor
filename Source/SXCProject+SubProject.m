@@ -9,14 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCProject+SubProject.h"
+#import "SXCProject+SubProject.h"
 
 #import "Utils/SXCKeyBuilder.h"
-#import "XCSourceFile.h"
-#import "XCSubProjectDefinition.h"
-#import "XCTarget.h"
+#import "SXCSourceFile.h"
+#import "SXCSubProjectDefinition.h"
+#import "SXCTarget.h"
 
-@implementation XCProject (SubProject)
+@implementation SXCProject (SubProject)
 
 #pragma mark sub-project related public methods
 
@@ -54,7 +54,7 @@
                 SXCXcodeFileType type = SXCXcodeFileTypeFromStringRepresentation(obj[@"fileType"]);
                 NSString *path = (NSString *)obj[@"path"];
                 if (type != SXCXcodeFileTypeBundle || [[path pathExtension] isEqualToString:@"bundle"]) {
-                    [results addObject:[XCSourceFile sourceFileWithProject:self
+                    [results addObject:[SXCSourceFile sourceFileWithProject:self
                                                                        key:key
                                                                       type:type
                                                                       name:path
@@ -69,9 +69,9 @@
 
 // makes PBXContainerItemProxy and PBXTargetDependency objects for the xcodeproj, and adds the dependency key
 // to all the specified targets
-- (void)addAsTargetDependency:(XCSubProjectDefinition *)xcodeprojDefinition toTargets:(NSArray *)targets
+- (void)addAsTargetDependency:(SXCSubProjectDefinition *)xcodeprojDefinition toTargets:(NSArray *)targets
 {
-    for (XCTarget *target in targets) {
+    for (SXCTarget *target in targets) {
         // make a new PBXContainerItemProxy
         NSString *key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
         NSString *containerItemProxyKey = [self makeContainerItemProxyForName:[xcodeprojDefinition name] fileRef:key
@@ -298,13 +298,13 @@
 }
 
 // make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subProject
-- (void)addProxies:(XCSubProjectDefinition *)xcodeproj
+- (void)addProxies:(SXCSubProjectDefinition *)xcodeproj
 {
     NSString *fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
-    XCProject *subProject = xcodeproj.subProject;
+    SXCProject *subProject = xcodeproj.subProject;
     NSDictionary *subProjectObjects = subProject.objects;
 
-    for (XCTarget *target in [subProject targets]) {
+    for (SXCTarget *target in [subProject targets]) {
         NSString *containerItemProxyKey = [self makeContainerItemProxyForName:target.name
                                                                       fileRef:fileRef
                                                                     proxyType:@"2"

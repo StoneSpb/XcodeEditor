@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCSourceFile.h"
+#import "SXCSourceFile.h"
 
-#import "XCProject.h"
+#import "SXCProject.h"
 #import "Utils/SXCKeyBuilder.h"
-#import "XCGroup.h"
+#import "SXCGroup.h"
 
-@implementation XCSourceFile
+@implementation SXCSourceFile
 
 @synthesize type = _type;
 @synthesize key = _key;
@@ -26,7 +26,7 @@
 #pragma mark - Class Methods
 //-------------------------------------------------------------------------------------------
 
-+ (instancetype)sourceFileWithProject:(XCProject *)project
++ (instancetype)sourceFileWithProject:(SXCProject *)project
                                   key:(NSString *)key
                                  type:(SXCXcodeFileType)type
                                  name:(NSString *)name
@@ -41,7 +41,7 @@
 #pragma mark - Initialization & Destruction
 //-------------------------------------------------------------------------------------------
 
-- (instancetype)initWithProject:(XCProject *)project
+- (instancetype)initWithProject:(SXCProject *)project
                             key:(NSString *)key
                            type:(SXCXcodeFileType)type
                            name:(NSString *)name

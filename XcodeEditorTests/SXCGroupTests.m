@@ -9,24 +9,24 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCGroup.h"
+#import "SXCGroup.h"
 
 #import <XCTest/XCTest.h>
 
-#import "XCProject.h"
-#import "XCSubProjectDefinition.h"
+#import "NSString+SXCTestResource.h"
 #import "SXCClassDefinition.h"
-#import "XCSourceFile.h"
-#import "XCXibDefinition.h"
-#import "XCTarget.h"
 #import "SXCFrameworkDefinition.h"
-#import "XCSourceFileDefinition.h"
-#import "NSString+TestResource.h"
+#import "SXCProject.h"
+#import "SXCSourceFile.h"
+#import "SXCSourceFileDefinition.h"
+#import "SXCSubProjectDefinition.h"
+#import "SXCTarget.h"
+#import "SXCXibDefinition.h"
 
-@interface XCFrameworkPath : NSObject
+@interface SXCFrameworkPath : NSObject
 @end
 
-@implementation XCFrameworkPath
+@implementation SXCFrameworkPath
 
 static const NSString* SDK_PATH =
     @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk";
@@ -43,18 +43,18 @@ static const NSString* SDK_PATH =
 
 @end
 
-@interface XCGroupTests : XCTestCase
+@interface SXCGroupTests : XCTestCase
 @end
 
-@implementation XCGroupTests
+@implementation SXCGroupTests
 {
-    XCProject* project;
-    XCGroup* group;
+    SXCProject* project;
+    SXCGroup* group;
 }
 
 - (void)setUp
 {
-    project = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+    project = [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
     group = [project groupWithPathFromRoot:@"Source/Main"];
     XCTAssertNotNil(group);
 }
@@ -64,7 +64,7 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_initialization_with
 {
-    XCGroup* aGroup = [XCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+    SXCGroup* aGroup = [SXCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
     XCTAssertNotNil(aGroup);
     XCTAssertEqualObjects([aGroup key], @"abcd1234");
@@ -93,19 +93,19 @@ static const NSString* SDK_PATH =
 {
     SXCClassDefinition* classDefinition = [SXCClassDefinition classDefinitionWithName:@"MyViewController"];
 
-    [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
-    [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+    [classDefinition setHeader:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
+    [classDefinition setSource:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
 
     NSLog(@"Class definition: %@", classDefinition);
 
     [group addClass:classDefinition];
     [project save];
 
-    XCSourceFile* fileResource = [project fileWithName:@"MyViewController.m"];
+    SXCSourceFile* fileResource = [project fileWithName:@"MyViewController.m"];
     XCTAssertNotNil(fileResource);
     XCTAssertEqualObjects([fileResource pathRelativeToProjectRoot], @"Source/Main/MyViewController.m");
 
-    XCTarget* examples = [project targetWithName:@"Examples"];
+    SXCTarget* examples = [project targetWithName:@"Examples"];
     XCTAssertNotNil(examples);
     [examples addMember:fileResource];
 
@@ -120,8 +120,8 @@ static const NSString* SDK_PATH =
 {
     SXCClassDefinition* classDefinition = [SXCClassDefinition classDefinitionWithName:@"AnotherClassAdded"];
 
-    [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
-    [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+    [classDefinition setHeader:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
+    [classDefinition setSource:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
 
     [group addClass:classDefinition toTargets:[project targets]];
     [project save];
@@ -130,14 +130,14 @@ static const NSString* SDK_PATH =
 - (void)test_returns_a_warning_if_an_existing_class_is_overwritten
 {
     SXCClassDefinition* classDefinition = [SXCClassDefinition classDefinitionWithName:@"AddedTwice"];
-    [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
-    [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+    [classDefinition setHeader:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
+    [classDefinition setSource:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
     [group addClass:classDefinition toTargets:[project targets]];
     [project save];
 
     classDefinition = [SXCClassDefinition classDefinitionWithName:@"AddedTwice"];
-    [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
-    [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+    [classDefinition setHeader:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
+    [classDefinition setSource:[NSString sxc_stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
     [group addClass:classDefinition toTargets:[project targets]];
     [project save];
 }
@@ -155,15 +155,15 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_adding_files_of_type_obc_cPlusPlus
 {
-    XCProject* anotherProject = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
-    XCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
+    SXCProject* anotherProject = [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
+    SXCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
     SXCClassDefinition* classDefinition =
         [SXCClassDefinition classDefinitionWithName:@"HelloWorldLayer"
                                            language:SXCClassDefinitionLanguageObjectiveCPlusPlus];
 
-    [classDefinition setHeader:[NSString stringWithTestResource:@"HelloWorldLayer.header"]];
-    [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
+    [classDefinition setHeader:[NSString sxc_stringWithTestResource:@"HelloWorldLayer.header"]];
+    [classDefinition setSource:[NSString sxc_stringWithTestResource:@"HelloWorldLayer.impl"]];
 
     [anotherGroup addClass:classDefinition toTargets:[anotherProject targets]];
     [anotherProject save];
@@ -174,12 +174,12 @@ static const NSString* SDK_PATH =
 
 - (void)test__allows_using_a_class_definition_to_add_cpp_files
 {
-    XCProject* anotherProject = [XCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
-    XCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
+    SXCProject* anotherProject = [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
+    SXCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
     SXCClassDefinition* definition =
         [SXCClassDefinition classDefinitionWithName:@"Person" language:SXCClassDefinitionLanguageCPlusPlus];
-    [definition setSource:[NSString stringWithTestResource:@"Person.impl"]];
+    [definition setSource:[NSString sxc_stringWithTestResource:@"Person.impl"]];
 
     [anotherGroup addClass:definition toTargets:[anotherProject targets]];
     [anotherProject save];
@@ -190,16 +190,16 @@ static const NSString* SDK_PATH =
 
 - (void)test_should_allow_adding_a_xib_file
 {
-    NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
-    XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:xibText];
+    NSString* xibText = [NSString sxc_stringWithTestResource:@"ESA.Sales.Foobar.xib"];
+    SXCXibDefinition* xibDefinition = [SXCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:xibText];
 
     [group addXib:xibDefinition];
     [project save];
 
-    XCSourceFile* xibFile = [project fileWithName:@"AddedXibFile.xib"];
+    SXCSourceFile* xibFile = [project fileWithName:@"AddedXibFile.xib"];
     XCTAssertNotNil(xibFile);
 
-    XCTarget* examples = [project targetWithName:@"Examples"];
+    SXCTarget* examples = [project targetWithName:@"Examples"];
     XCTAssertNotNil(examples);
     [examples addMember:xibFile];
 
@@ -212,8 +212,8 @@ static const NSString* SDK_PATH =
 
 - (void)test_provides_a_convenience_method_to_add_a_xib_file_and_specify_targets
 {
-    NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
-    XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AnotherAddedXibFile" content:xibText];
+    NSString* xibText = [NSString sxc_stringWithTestResource:@"ESA.Sales.Foobar.xib"];
+    SXCXibDefinition* xibDefinition = [SXCXibDefinition xibDefinitionWithName:@"AnotherAddedXibFile" content:xibText];
 
     [group addXib:xibDefinition toTargets:[project targets]];
     [project save];
@@ -222,13 +222,13 @@ static const NSString* SDK_PATH =
 - (void)test_provides_an_option_to_accept_the_existing_file_if_it_exists
 {
     NSString* newXibText = @"Don't blow away my contents if I already exists";
-    XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
+    SXCXibDefinition* xibDefinition = [SXCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
     [xibDefinition setFileOperationType:SXCFileOperationTypeAcceptExisting];
 
     [group addXib:xibDefinition toTargets:[project targets]];
     [project save];
 
-    NSString* xibContent = [NSString stringWithTestResource:@"expanz-iOS-SDK/Source/Main/AddedXibFile.xib"];
+    NSString* xibContent = [NSString sxc_stringWithTestResource:@"expanz-iOS-SDK/Source/Main/AddedXibFile.xib"];
     NSLog(@"Xib content: %@", xibContent);
     XCTAssertNotEqualObjects(xibContent, newXibText);
 }
@@ -239,7 +239,7 @@ static const NSString* SDK_PATH =
 - (void)test_allows_adding_a_framework_on_the_system_volume
 {
     SXCFrameworkDefinition* frameworkDefinition =
-        [SXCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath eventKitUIPath] copyToDestination:NO];
+        [SXCFrameworkDefinition frameworkDefinitionWithFilePath:[SXCFrameworkPath eventKitUIPath] copyToDestination:NO];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 }
@@ -247,7 +247,7 @@ static const NSString* SDK_PATH =
 - (void)test_allows_adding_a_framework_copying_it_to_the_destination_folder
 {
     SXCFrameworkDefinition* frameworkDefinition =
-        [SXCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath coreMidiPath] copyToDestination:YES];
+        [SXCFrameworkDefinition frameworkDefinitionWithFilePath:[SXCFrameworkPath coreMidiPath] copyToDestination:YES];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 }
@@ -257,8 +257,8 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_adding_a_xcodeproj_file
 {
-    XCSubProjectDefinition* projectDefinition =
-        [XCSubProjectDefinition subProjectDefinitionWithName:@"HelloBoxy"
+    SXCSubProjectDefinition* projectDefinition =
+        [SXCSubProjectDefinition subProjectDefinitionWithName:@"HelloBoxy"
                                                         path:@"/tmp/XcodeEditorTests/HelloBoxy"
                                                parentProject:project];
 
@@ -269,8 +269,8 @@ static const NSString* SDK_PATH =
 
 - (void)test_provides_a_convenience_method_to_add_a_xcodeproj_file_and_specify_targets
 {
-    XCSubProjectDefinition* xcodeprojDefinition =
-        [XCSubProjectDefinition subProjectDefinitionWithName:@"ArchiveProj"
+    SXCSubProjectDefinition* xcodeprojDefinition =
+        [SXCSubProjectDefinition subProjectDefinitionWithName:@"ArchiveProj"
                                                         path:@"/tmp/XcodeEditorTests/ArchiveProj"
                                                parentProject:project];
 
@@ -319,8 +319,8 @@ static const NSString* SDK_PATH =
 
 - (void)test_should_allows_adding_a_header
 {
-    XCSourceFileDefinition* header =
-        [XCSourceFileDefinition sourceDefinitionWithName:@"SomeHeader.h"
+    SXCSourceFileDefinition* header =
+        [SXCSourceFileDefinition sourceDefinitionWithName:@"SomeHeader.h"
                                                     text:@"@protocol Foobar<NSObject> @end"
                                                     type:SXCXcodeFileTypeSourceCodeHeader];
     [group addSourceFile:header];
@@ -330,8 +330,8 @@ static const NSString* SDK_PATH =
 - (void)test_allows_adding_an_image_file
 {
     NSData* data = [NSData dataWithContentsOfFile:@"/tmp/XcodeEditorTests/goat-funny.png"];
-    XCSourceFileDefinition* sourceFileDefinition =
-        [XCSourceFileDefinition sourceDefinitionWithName:@"MyImageFile.png"
+    SXCSourceFileDefinition* sourceFileDefinition =
+        [SXCSourceFileDefinition sourceDefinitionWithName:@"MyImageFile.png"
                                                     data:data
                                                     type:SXCXcodeFileTypeImageResourcePNG];
     [group addSourceFile:sourceFileDefinition];
@@ -349,8 +349,8 @@ static const NSString* SDK_PATH =
 
 - (void)test_able_to_return_a_member_by_its_name
 {
-    XCGroup* anotherGroup = [project groupWithPathFromRoot:@"Source/Main/Core/Model"];
-    XCSourceFile* member = [anotherGroup memberWithDisplayName:@"expanz_model_AppSite.m"];
+    SXCGroup* anotherGroup = [project groupWithPathFromRoot:@"Source/Main/Core/Model"];
+    SXCSourceFile* member = [anotherGroup memberWithDisplayName:@"expanz_model_AppSite.m"];
     XCTAssertNotNil(member);
 }
 
@@ -366,7 +366,7 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_deleting_a_group_optionally_removing_also_the_contents
 {
-    XCGroup* aGroup = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
+    SXCGroup* aGroup = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
 
     NSArray* groups = [project groups];
     NSLog(@"Groups now: %@", groups);
@@ -377,7 +377,7 @@ static const NSString* SDK_PATH =
     groups = [project groups];
     NSLog(@"Groups now: %@", groups);
 
-    XCGroup* deleted = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
+    SXCGroup* deleted = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
     XCTAssertNil(deleted);
 }
 

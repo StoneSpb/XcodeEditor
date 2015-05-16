@@ -14,15 +14,15 @@
 #import "SXCAbstractDefinition.h"
 #import "SXCXcodeFileType.h"
 
-@class XCProject;
+@class SXCProject;
 
-@interface XCSubProjectDefinition : SXCAbstractDefinition
+@interface SXCSubProjectDefinition : SXCAbstractDefinition
 {
     NSString *_name;
     NSString *_path;
     SXCXcodeFileType _type;
-    XCProject *_subProject;
-    XCProject *_parentProject;
+    SXCProject *_subProject;
+    SXCProject *_parentProject;
     NSString *_key;
     NSString *_fullProjectPath;
     NSString *_relativePath;
@@ -31,14 +31,14 @@
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) NSString *path;
 @property (nonatomic, readonly) SXCXcodeFileType type;
-@property (nonatomic, strong, readonly) XCProject *subProject;
-@property (nonatomic, strong, readonly) XCProject *parentProject;
+@property (nonatomic, strong, readonly) SXCProject *subProject;
+@property (nonatomic, strong, readonly) SXCProject *parentProject;
 @property (nonatomic, strong, readonly) NSString *key;
 @property (nonatomic, strong, readwrite) NSString *fullProjectPath;
 
 + (instancetype)subProjectDefinitionWithName:(NSString *)name
                                         path:(NSString *)path
-                               parentProject:(XCProject *)parentProject;
+                               parentProject:(SXCProject *)parentProject;
 
 - (NSString *)projectFileName;
 - (NSString *)fullPathName;

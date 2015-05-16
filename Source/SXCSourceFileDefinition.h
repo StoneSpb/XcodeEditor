@@ -14,7 +14,7 @@
 #import "SXCAbstractDefinition.h"
 #import "SXCXcodeFileType.h"
 
-@interface XCSourceFileDefinition : SXCAbstractDefinition
+@interface SXCSourceFileDefinition : SXCAbstractDefinition
 {
     NSString* _sourceFileName;
     SXCXcodeFileType _type;

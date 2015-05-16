@@ -13,10 +13,10 @@
 
 #import <XCTest/XCTest.h>
 
-@interface XCClassDefinitionTests : XCTestCase
+@interface SXCClassDefinitionTests : XCTestCase
 @end
 
-@implementation XCClassDefinitionTests
+@implementation SXCClassDefinitionTests
 {
     SXCClassDefinition* classDefinition;
 }

@@ -9,26 +9,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCTarget.h"
+#import "SXCTarget.h"
 
-#import "XCGroup.h"
+#import "SXCGroup.h"
 #import "SXCKeyBuilder.h"
-#import "XCSourceFile.h"
-#import "XCProject.h"
-#import "XCProjectBuildConfig.h"
+#import "SXCSourceFile.h"
+#import "SXCProject.h"
+#import "SXCProjectBuildConfig.h"
 
-@interface XCTarget ()
+@interface SXCTarget ()
 
 @property(nonatomic, strong, readonly) NSMutableDictionary* targetObject;
 
 @end
 
-@implementation XCTarget
+@implementation SXCTarget
 
 /* ================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (instancetype)targetWithProject:(XCProject*)project
++ (instancetype)targetWithProject:(SXCProject*)project
                               key:(NSString*)key
                              name:(NSString*)name
                       productName:(NSString*)productName
@@ -45,7 +45,7 @@
 /* ================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithProject:(XCProject*)project
+- (instancetype)initWithProject:(SXCProject*)project
                             key:(NSString*)key
                            name:(NSString*)name
                     productName:(NSString*)productName
@@ -74,7 +74,7 @@
             NSDictionary* buildPhase = objects[buildPhaseKey];
             if ([buildPhase[@"isa"] sxc_hasResourcesBuildPhaseType]) {
                 for (NSString* buildFileKey in buildPhase[@"files"]) {
-                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    SXCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
                         [_resources addObject:targetMember];
                     }
@@ -93,7 +93,7 @@
         NSString* buildConfigurationRootSectionKey = objects[_key][@"buildConfigurationList"];
         NSDictionary* buildConfigurationDictionary = objects[buildConfigurationRootSectionKey];
         _configurations =
-            [[XCProjectBuildConfig buildConfigurationsFromArray:buildConfigurationDictionary[@"buildConfigurations"]
+            [[SXCProjectBuildConfig buildConfigurationsFromArray:buildConfigurationDictionary[@"buildConfigurations"]
                                                       inProject:_project] mutableCopy];
         _defaultConfigurationName = [buildConfigurationDictionary[@"defaultConfigurationName"] copy];
     }
@@ -101,12 +101,12 @@
     return [_configurations copy];
 }
 
-- (XCProjectBuildConfig *)defaultConfiguration
+- (SXCProjectBuildConfig *)defaultConfiguration
 {
     return [self configurations][_defaultConfigurationName];
 }
 
-- (XCProjectBuildConfig *)configurationWithName:(NSString*)name
+- (SXCProjectBuildConfig *)configurationWithName:(NSString*)name
 {
     return [self configurations][name];
 }
@@ -120,7 +120,7 @@
             NSDictionary* buildPhase = objects[buildPhaseKey];
             if ([buildPhase[@"isa"] sxc_hasSourcesOrFrameworksBuildPhaseType]) {
                 for (NSString* buildFileKey in buildPhase[@"files"]) {
-                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    SXCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
                         [_members addObject:[_project fileWithKey:targetMember.key]];
                     }
@@ -131,7 +131,7 @@
     return _members;
 }
 
-- (void)addMember:(XCSourceFile*)member
+- (void)addMember:(SXCSourceFile*)member
 {
     [member becomeBuildFile];
     NSDictionary* objects = _project.objects;
@@ -226,7 +226,7 @@
     };
 
     dupTargetObj[@"buildConfigurationList"] =
-        [XCProjectBuildConfig duplicatedBuildConfigurationListWithKey:buildConfigurationListKey
+        [SXCProjectBuildConfig duplicatedBuildConfigurationListWithKey:buildConfigurationListKey
                                                             inProject:_project
                                         withBuildConfigurationVisitor:visitor];
 
@@ -240,7 +240,7 @@
 
     [_project dropCache];
 
-    return [[XCTarget alloc] initWithProject:_project
+    return [[SXCTarget alloc] initWithProject:_project
                                          key:dupTargetObjKey
                                         name:targetName
                                  productName:productName
@@ -277,7 +277,7 @@
     return _project.objects[_key];
 }
 
-- (XCSourceFile*)buildFileWithKey:(NSString*)theKey
+- (SXCSourceFile*)buildFileWithKey:(NSString*)theKey
 {
     NSDictionary* obj = _project.objects[theKey];
     if (obj) {
@@ -341,7 +341,7 @@
 
 - (void)addReferenceToProductsGroupForTargetObject:(NSMutableDictionary*)dupTargetObj
 {
-    XCGroup* mainGroup = nil;
+    SXCGroup* mainGroup = nil;
     NSPredicate* productsPredicate = [NSPredicate predicateWithFormat:@"displayName == 'Products'"];
     NSArray* filteredGroups = [_project.groups filteredArrayUsingPredicate:productsPredicate];
 

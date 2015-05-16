@@ -9,22 +9,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-#import <XCTest/XCTest.h>
 #import "SXCKeyBuilder.h"
 
-@interface XCKeyBuilderTests : XCTestCase
+#import <XCTest/XCTest.h>
+
+@interface SXCKeyBuilderTests : XCTestCase
 
 @end
 
-@implementation XCKeyBuilderTests
+@implementation SXCKeyBuilderTests
 
 /* ====================================================================================================================================== */
 #pragma mark - md5sum hash
 
 - (void)test_returns_an_md5_hash_for_an_NSData_instance
 {
-
     NSString* requiresKey = @"ESA_Sales_Customer_Browse_ViewController.h";
 
     SXCKeyBuilder* builtKey = [SXCKeyBuilder forItemNamed:requiresKey];
@@ -33,6 +32,5 @@
     XCTAssertNotNil(key);
     XCTAssertEqual(key.length, 24);
 }
-
 
 @end

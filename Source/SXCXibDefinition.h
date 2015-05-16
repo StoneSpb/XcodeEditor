@@ -13,7 +13,7 @@
 
 #import "SXCAbstractDefinition.h"
 
-@interface XCXibDefinition : SXCAbstractDefinition
+@interface SXCXibDefinition : SXCAbstractDefinition
 {
     NSString* _name;
     NSString* _content;

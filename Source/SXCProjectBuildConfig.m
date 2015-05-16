@@ -9,20 +9,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XCProjectBuildConfig.h"
+#import "SXCProjectBuildConfig.h"
 
-#import "XCGroup.h"
+#import "SXCGroup.h"
 #import "SXCKeyBuilder.h"
-#import "XCProject.h"
-#import "XCSourceFile.h"
+#import "SXCProject.h"
+#import "SXCSourceFile.h"
 
-@implementation XCProjectBuildConfig
-
+@implementation SXCProjectBuildConfig
 
 /* ================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project
++ (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(SXCProject*)project
 {
     NSMutableDictionary* configurations = [[NSMutableDictionary alloc] init];
 
@@ -33,18 +32,18 @@
         NSString* name = buildConfiguration[@"name"];
 
         if ([buildConfiguration[@"isa"] sxc_hasBuildConfigurationType]) {
-            XCProjectBuildConfig* configuration = configurations[name];
+            SXCProjectBuildConfig* configuration = configurations[name];
             if (!configuration) {
-                configuration = [[XCProjectBuildConfig alloc] initWithProject:project key:buildConfigurationKey];
+                configuration = [[SXCProjectBuildConfig alloc] initWithProject:project key:buildConfigurationKey];
                 configurations[name] = configuration;
             }
 
-            XCSourceFile* configurationFile = [project fileWithKey:buildConfiguration[@"baseConfigurationReference"]];
+            SXCSourceFile* configurationFile = [project fileWithKey:buildConfiguration[@"baseConfigurationReference"]];
             if (configurationFile) {
                 NSString* path = configurationFile.path;
 
                 if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                    XCGroup* group = [project groupWithSourceFile:configurationFile];
+                    SXCGroup* group = [project groupWithSourceFile:configurationFile];
                     path = [[group pathRelativeToParent] stringByAppendingPathComponent:path];
                 }
 
@@ -69,7 +68,7 @@
 }
 
 + (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey
-                                           inProject:(XCProject*)project
+                                           inProject:(SXCProject*)project
                        withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
 {
     NSDictionary* buildConfigurationList = project.objects[buildConfigurationListKey];
@@ -96,7 +95,7 @@
 /* ================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithProject:(XCProject*)project key:(NSString*)key
+- (instancetype)initWithProject:(SXCProject*)project key:(NSString*)key
 {
     self = [super init];
     if (self)
@@ -114,7 +113,6 @@
 {
     return [self initWithProject:nil key:nil];
 }
-
 
 /* ================================================================================================================== */
 #pragma mark - Interface Methods
@@ -142,7 +140,6 @@
     objects[_key] = dict;
 }
 
-
 - (id <NSCopying>)valueForKey:(NSString*)key
 {
     id <NSCopying> value = [_buildSettings objectForKey:key];
@@ -165,11 +162,10 @@
     return description;
 }
 
-
 /* ================================================================================================================== */
 #pragma mark - Private Methods
 
-+ (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey inProject:(XCProject*)project
++ (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey inProject:(SXCProject*)project
     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
 {
     NSDictionary* buildConfiguration = project.objects[buildConfigurationKey];

@@ -11,16 +11,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class XCProject;
-@class XCSourceFile;
-@class XCProjectBuildConfig;
+@class SXCProject;
+@class SXCSourceFile;
+@class SXCProjectBuildConfig;
 
 /**
 * Represents a target in an xcode project.
 */
-@interface XCTarget : NSObject
+@interface SXCTarget : NSObject
 {
-    XCProject* _project;
+    SXCProject* _project;
     NSString* _key;
     NSString* _name;
     NSString* _productName;
@@ -38,7 +38,7 @@
 @property(nonatomic, strong) NSString* productName;
 @property(nonatomic, strong, readonly) NSString* productReference;
 
-+ (instancetype)targetWithProject:(XCProject*)project
++ (instancetype)targetWithProject:(SXCProject*)project
                               key:(NSString*)key
                              name:(NSString*)name
                       productName:(NSString*)productName
@@ -49,10 +49,10 @@
 - (NSArray*)members;
 
 - (NSDictionary*)configurations;
-- (XCProjectBuildConfig *)configurationWithName:(NSString*)name;
-- (XCProjectBuildConfig *)defaultConfiguration;
+- (SXCProjectBuildConfig *)configurationWithName:(NSString*)name;
+- (SXCProjectBuildConfig *)defaultConfiguration;
 
-- (void)addMember:(XCSourceFile*)member;
+- (void)addMember:(SXCSourceFile*)member;
 - (void)removeMemberWithKey:(NSString*)key;
 - (void)removeMembersWithKeys:(NSArray*)keys;
 
