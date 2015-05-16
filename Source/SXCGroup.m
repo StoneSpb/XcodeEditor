@@ -11,20 +11,19 @@
 
 #import "SXCGroup.h"
 
-#import "SXCFrameworkDefinition.h"
-#import "SXCTarget.h"
-#import "SXCFileOperationQueue.h"
-#import "SXCXibDefinition.h"
-#import "SXCSourceFile.h"
-#import "SXCProject.h"
 #import "SXCClassDefinition.h"
-#import "Utils/SXCKeyBuilder.h"
+#import "SXCFileOperationQueue.h"
+#import "SXCFrameworkDefinition.h"
+#import "SXCProject+SubProject.h"
+#import "SXCProject.h"
+#import "SXCSourceFile.h"
 #import "SXCSourceFileDefinition.h"
 #import "SXCSubProjectDefinition.h"
-#import "SXCProject+SubProject.h"
+#import "SXCTarget.h"
+#import "SXCXibDefinition.h"
+#import "Utils/SXCKeyBuilder.h"
 
 @implementation SXCGroup
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -103,14 +102,11 @@
     return [self pathRelativeToParent] == nil && [self displayName] == nil;
 }
 
-
 //-------------------------------------------------------------------------------------------
 #pragma mark Adding children
 
-
 - (void)addClass:(SXCClassDefinition*)classDefinition
 {
-
     if ([classDefinition header])
     {
         [self makeGroupMemberWithName:[classDefinition headerFileName]
@@ -136,7 +132,6 @@
 
     _project.objects[_key] = [self asDictionary];
 }
-
 
 - (void)addClass:(SXCClassDefinition*)classDefinition toTargets:(NSArray*)targets
 {
@@ -190,14 +185,12 @@
     objects[_key] = [self asDictionary];
 }
 
-
 - (void)addFramework:(SXCFrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets
 {
     [self addFramework:frameworkDefinition];
     SXCSourceFile* frameworkSourceRef = (SXCSourceFile*) [self memberWithDisplayName:[frameworkDefinition name]];
     [self addSourceFile:frameworkSourceRef toTargets:targets];
 }
-
 
 - (void)addFolderReference:(NSString*)sourceFolder {
     NSString* folderName = [sourceFolder lastPathComponent];
@@ -276,7 +269,6 @@
     SXCSourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
     [self addSourceFile:sourceFile toTargets:targets];
 }
-
 
 // adds an xcodeproj as a subproject of the current project.
 - (void)addSubProject:(SXCSubProjectDefinition*)projectDefinition
@@ -367,7 +359,8 @@
     [self removeProductsGroupFromProject:productsGroupKey];
 
     // Remove the PBXContainerItemProxy for this xcodeproj with proxyType 1
-    NSString* containerItemProxyKey = [_project containerItemProxyKeyForName:[projectDefinition pathRelativeToProjectRoot] proxyType:@"1"];
+    NSString* containerItemProxyKey =
+        [_project containerItemProxyKeyForName:[projectDefinition pathRelativeToProjectRoot] proxyType:@"1"];
     if (containerItemProxyKey != nil)
     {
         [_project.objects removeObjectForKey:containerItemProxyKey];
@@ -430,7 +423,6 @@
 
 - (NSArray*)buildFileKeys
 {
-
     NSMutableArray* arrayOfBuildFileKeys = [NSMutableArray array];
     for (id <SXCXcodeGroupMember> groupMember in [self members])
     {
@@ -506,7 +498,8 @@
         SXCGroup* group = nil;
         NSString* key = [_key copy];
 
-        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil)
+        while ((group = [_project groupForGroupMemberWithKey:key]) != nil &&
+               [group pathRelativeToParent] != nil)
         {
             [pathComponents addObject:[group pathRelativeToParent]];
             key = [[group key] copy];
@@ -536,7 +529,6 @@
 
 - (void)addMemberWithKey:(NSString*)key
 {
-
     for (NSString* childKey in _children)
     {
         if ([childKey isEqualToString:key])
@@ -632,7 +624,11 @@
         uniquer = [uniquer stringByAppendingString:productName];
     }
     NSString* productKey = [[SXCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
-    SXCGroup* productsGroup = [SXCGroup groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
+    SXCGroup* productsGroup = [SXCGroup groupWithProject:_project
+                                                     key:productKey
+                                                   alias:@"Products"
+                                                    path:nil
+                                                children:children];
     _project.objects[productKey] = [productsGroup asDictionary];
     return productKey;
 }
@@ -739,7 +735,6 @@
     reference[@"sourceTree"] = @"<group>";
     return reference;
 }
-
 
 - (NSDictionary*)asDictionary
 {

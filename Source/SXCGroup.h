@@ -13,14 +13,14 @@
 
 #import "SXCXcodeGroupMember.h"
 
-@class SXCProject;
 @class SXCClassDefinition;
-@class SXCSourceFile;
-@class SXCXibDefinition;
 @class SXCFileOperationQueue;
 @class SXCFrameworkDefinition;
+@class SXCProject;
+@class SXCSourceFile;
 @class SXCSourceFileDefinition;
 @class SXCSubProjectDefinition;
+@class SXCXibDefinition;
 
 /**
 * Represents a group container in an Xcode project. A group can contain members of type `XCSourceFile` or other
@@ -67,11 +67,11 @@
 
 #pragma mark Initializers
 
-+ (SXCGroup*)groupWithProject:(SXCProject*)project
-                          key:(NSString*)key
-                        alias:(NSString*)alias
-                         path:(NSString*)path
-                     children:(NSArray*)children;
++ (instancetype)groupWithProject:(SXCProject*)project
+                             key:(NSString*)key
+                           alias:(NSString*)alias
+                            path:(NSString*)path
+                        children:(NSArray*)children;
 
 #pragma mark Parent group
 

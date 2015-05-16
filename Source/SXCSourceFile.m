@@ -11,16 +11,15 @@
 
 #import "SXCSourceFile.h"
 
+#import "SXCGroup.h"
 #import "SXCProject.h"
 #import "Utils/SXCKeyBuilder.h"
-#import "SXCGroup.h"
 
 @implementation SXCSourceFile
 
 @synthesize type = _type;
 @synthesize key = _key;
 @synthesize sourceTree = _sourceTree;
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -35,7 +34,6 @@
 {
     return [[self alloc] initWithProject:project key:key type:type name:name sourceTree:tree path:path];
 }
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -59,7 +57,6 @@
     }
     return self;
 }
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods

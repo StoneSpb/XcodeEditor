@@ -32,7 +32,6 @@ typedef enum
         SXCFileOperationTypeReferenceOnly
 } SXCFileOperationType;
 
-
 /**
 * Holds properties to all types of resource that can be added to an Xcode project.
 */

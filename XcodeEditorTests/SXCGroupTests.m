@@ -64,7 +64,11 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_initialization_with
 {
-    SXCGroup* aGroup = [SXCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+    SXCGroup* aGroup = [SXCGroup groupWithProject:project
+                                              key:@"abcd1234"
+                                            alias:@"Main"
+                                             path:@"Source/Main"
+                                         children:nil];
 
     XCTAssertNotNil(aGroup);
     XCTAssertEqualObjects([aGroup key], @"abcd1234");
@@ -155,7 +159,8 @@ static const NSString* SDK_PATH =
 
 - (void)test_allows_adding_files_of_type_obc_cPlusPlus
 {
-    SXCProject* anotherProject = [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
+    SXCProject* anotherProject =
+        [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
     SXCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
     SXCClassDefinition* classDefinition =
@@ -174,7 +179,8 @@ static const NSString* SDK_PATH =
 
 - (void)test__allows_using_a_class_definition_to_add_cpp_files
 {
-    SXCProject* anotherProject = [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
+    SXCProject* anotherProject =
+        [SXCProject projectWithFilePath:@"/tmp/XcodeEditorTests/HelloBoxy/HelloBoxy.xcodeproj"];
     SXCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
     SXCClassDefinition* definition =

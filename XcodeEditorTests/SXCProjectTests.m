@@ -13,9 +13,9 @@
 
 #import <XCTest/XCTest.h>
 
+#import "SXCGroup.h"
 #import "SXCSourceFile.h"
 #import "SXCTarget.h"
-#import "SXCGroup.h"
 
 @interface SXCProjectTests : XCTestCase
 

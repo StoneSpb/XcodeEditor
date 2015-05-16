@@ -11,10 +11,10 @@
 
 #import "SXCProject+SubProject.h"
 
-#import "Utils/SXCKeyBuilder.h"
 #import "SXCSourceFile.h"
 #import "SXCSubProjectDefinition.h"
 #import "SXCTarget.h"
+#import "Utils/SXCKeyBuilder.h"
 
 @implementation SXCProject (SubProject)
 
@@ -55,11 +55,11 @@
                 NSString *path = (NSString *)obj[@"path"];
                 if (type != SXCXcodeFileTypeBundle || [[path pathExtension] isEqualToString:@"bundle"]) {
                     [results addObject:[SXCSourceFile sourceFileWithProject:self
-                                                                       key:key
-                                                                      type:type
-                                                                      name:path
-                                                                sourceTree:nil
-                                                                      path:nil]];
+                                                                        key:key
+                                                                       type:type
+                                                                       name:path
+                                                                 sourceTree:nil
+                                                                       path:nil]];
                 }
             }
         }
@@ -74,11 +74,14 @@
     for (SXCTarget *target in targets) {
         // make a new PBXContainerItemProxy
         NSString *key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
-        NSString *containerItemProxyKey = [self makeContainerItemProxyForName:[xcodeprojDefinition name] fileRef:key
-            proxyType:@"1" uniqueName:[target name]];
+        NSString *containerItemProxyKey = [self makeContainerItemProxyForName:[xcodeprojDefinition name]
+                                                                      fileRef:key
+                                                                    proxyType:@"1"
+                                                                   uniqueName:[target name]];
         // make a PBXTargetDependency
         NSString *targetDependencyKey = [self makeTargetDependency:[xcodeprojDefinition name]
-            forContainerItemProxyKey:containerItemProxyKey uniqueName:[target name]];
+                                          forContainerItemProxyKey:containerItemProxyKey
+                                                        uniqueName:[target name]];
         // add entry in each targets dependencies list
         [target addDependency:targetDependencyKey];
     }
@@ -87,8 +90,10 @@
 // returns an array of keys for all project objects (not just files) that match the given criteria.  Since this is
 // a convenience method intended to save typing elsewhere, each type has its own field to match to rather than each
 // matching on name or path as you might expect.
-- (NSArray *)keysForProjectObjectsOfType:(SXCXcodeMemberType)memberType withIdentifier:(NSString *)identifier
-    singleton:(BOOL)singleton required:(BOOL)required
+- (NSArray *)keysForProjectObjectsOfType:(SXCXcodeMemberType)memberType
+                          withIdentifier:(NSString *)identifier
+                               singleton:(BOOL)singleton
+                                required:(BOOL)required
 {
     __block NSMutableArray *returnValue = [[NSMutableArray alloc] init];
     [self.objects enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
@@ -196,7 +201,6 @@
 #pragma mark - Private Methods
 //-------------------------------------------------------------------------------------------
 
-
 // makes a PBXContainerItemProxy object for a given PBXFileReference object.  Replaces pre-existing objects.
 - (NSString *)makeContainerItemProxyForName:(NSString *)name
                                     fileRef:(NSString *)fileRef
@@ -236,7 +240,7 @@
 
 // makes a PBXReferenceProxy object for a given PBXContainerProxy object.  Replaces pre-existing objects.
 - (void)makeReferenceProxyForContainerItemProxy:(NSString *)containerItemProxyKey
-    buildProductReference:(NSDictionary *)buildProductReference
+                          buildProductReference:(NSDictionary *)buildProductReference
 {
     NSMutableDictionary *objects = self.objects;
     NSString *path = buildProductReference[@"path"];
@@ -263,8 +267,9 @@
 }
 
 // makes a PBXTargetDependency object for a given PBXContainerItemProxy.  Replaces pre-existing objects.
-- (NSString *)makeTargetDependency:(NSString *)name forContainerItemProxyKey:(NSString *)containerItemProxyKey
-    uniqueName:(NSString *)uniqueName
+- (NSString *)makeTargetDependency:(NSString *)name
+          forContainerItemProxyKey:(NSString *)containerItemProxyKey
+                        uniqueName:(NSString *)uniqueName
 {
     NSString *keyName;
     if (uniqueName != nil) {

@@ -10,10 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCAbstractDefinition.h"
-#import "XCGroup.h"
 #import "XCClassDefinition.h"
 #import "XCFileOperationQueue.h"
 #import "XCFrameworkDefinition.h"
+#import "XCGroup.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
 #import "XCSourceFileDefinition.h"

@@ -11,11 +11,11 @@
 
 #import "SXCProject.h"
 
+#import "SXCFileOperationQueue.h"
 #import "SXCGroup.h"
+#import "SXCProjectBuildConfig.h"
 #import "SXCSourceFile.h"
 #import "SXCTarget.h"
-#import "SXCFileOperationQueue.h"
-#import "SXCProjectBuildConfig.h"
 
 @implementation SXCProject
 
@@ -27,9 +27,8 @@
 
 + (instancetype)projectWithFilePath:(NSString*)filePath
 {
-    return [[SXCProject alloc] initWithFilePath:filePath];
+    return [[self alloc] initWithFilePath:filePath];
 }
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -53,7 +52,6 @@
     return self;
 }
 
-
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
 //-------------------------------------------------------------------------------------------
@@ -69,11 +67,11 @@
             NSString* path = obj[@"path"];
             NSString* sourceTree = obj[@"sourceTree"];
             SXCSourceFile* sourceFile = [SXCSourceFile sourceFileWithProject:self
-                                                                       key:key
-                                                                      type:fileType
-                                                                      name:path
-                                                                sourceTree:(sourceTree ?: @"<group>")
-                                                                      path:nil];
+                                                                         key:key
+                                                                        type:fileType
+                                                                        name:path
+                                                                  sourceTree:(sourceTree ?: @"<group>")
+                                                                        path:nil];
             [results addObject:sourceFile];
         }
     }];
@@ -94,11 +92,11 @@
             name = path;
         }
         return [SXCSourceFile sourceFileWithProject:self
-                                               key:key
-                                              type:fileType
-                                              name:name
-                                        sourceTree:(sourceTree ?: @"<group>")
-                                              path:path];
+                                                key:key
+                                               type:fileType
+                                               name:name
+                                         sourceTree:(sourceTree ?: @"<group>")
+                                               path:path];
     }
     return nil;
 }
@@ -112,7 +110,6 @@
     }
     return nil;
 }
-
 
 - (NSArray*)headerFiles
 {
@@ -144,7 +141,6 @@
 {
     return _filePath;
 }
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Groups
@@ -259,7 +255,6 @@
                             children:dictionary[@"children"]];
 }
 
-
 //-------------------------------------------------------------------------------------------
 #pragma mark targets
 //-------------------------------------------------------------------------------------------
@@ -343,7 +338,6 @@
 {
     return [[self configurations] objectForKey:_defaultConfigurationName];
 }
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Private

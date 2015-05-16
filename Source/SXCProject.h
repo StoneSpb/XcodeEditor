@@ -11,16 +11,16 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SXCXcodeMemberType.h"
 #import "SXCXcodeFileType.h"
+#import "SXCXcodeMemberType.h"
 
 @class SXCClassDefinition;
-@class SXCGroup;
 @class SXCFileOperationQueue;
-@class SXCSourceFile;
-@class SXCTarget;
-@class SXCSubProjectDefinition;
+@class SXCGroup;
 @class SXCProjectBuildConfig;
+@class SXCSourceFile;
+@class SXCSubProjectDefinition;
+@class SXCTarget;
 
 NSString* const SXCProjectNotFoundException;
 
@@ -51,7 +51,6 @@ NSString* const SXCProjectNotFoundException;
  * Creates a new project editor instance with the specified Project.xcodeproj file.
  */
 + (instancetype)projectWithFilePath:(NSString*)filePath;
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Files
@@ -94,7 +93,6 @@ NSString* const SXCProjectNotFoundException;
 - (NSArray*)imagePNGFiles;
 
 - (NSString*)filePath;
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Groups
@@ -161,7 +159,6 @@ NSString* const SXCProjectNotFoundException;
 * Saves a project after editing.
 */
 - (void)save;
-
 
 //-------------------------------------------------------------------------------------------
 /**

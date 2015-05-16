@@ -13,9 +13,9 @@
 
 #import "SXCGroup.h"
 #import "SXCKeyBuilder.h"
-#import "SXCSourceFile.h"
 #import "SXCProject.h"
 #import "SXCProjectBuildConfig.h"
+#import "SXCSourceFile.h"
 
 @interface SXCTarget ()
 
@@ -62,7 +62,7 @@
     return self;
 }
 
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Interface Methods
 
 - (NSArray*)resources
@@ -241,10 +241,10 @@
     [_project dropCache];
 
     return [[SXCTarget alloc] initWithProject:_project
-                                         key:dupTargetObjKey
-                                        name:targetName
-                                 productName:productName
-                            productReference:dupTargetObj[@"productReference"]];
+                                          key:dupTargetObjKey
+                                         name:targetName
+                                  productName:productName
+                             productReference:dupTargetObj[@"productReference"]];
 }
 
 /* ================================================================================================================== */
@@ -262,7 +262,7 @@
     self.targetObject[@"productName"] = _productName;
 }
 
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Utility Methods
 
 - (NSString*)description
@@ -270,7 +270,7 @@
     return [NSString stringWithFormat:@"Target: name=%@, files=%@", _name, _members];
 }
 
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Private Methods
 
 - (NSMutableDictionary*)targetObject {

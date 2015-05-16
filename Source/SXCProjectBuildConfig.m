@@ -165,8 +165,9 @@
 /* ================================================================================================================== */
 #pragma mark - Private Methods
 
-+ (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey inProject:(SXCProject*)project
-    withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
++ (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey
+                                       inProject:(SXCProject*)project
+                   withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
 {
     NSDictionary* buildConfiguration = project.objects[buildConfigurationKey];
     NSMutableDictionary* dupBuildConfiguration = [buildConfiguration mutableCopy];

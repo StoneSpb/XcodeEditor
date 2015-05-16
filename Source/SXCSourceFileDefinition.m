@@ -17,7 +17,7 @@
 @synthesize type = _type;
 @synthesize data = _data;
 
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Class Methods
 
 + (instancetype)sourceDefinitionWithName:(NSString*)name text:(NSString*)text type:(SXCXcodeFileType)type
@@ -30,8 +30,7 @@
     return [[self alloc] initWithName:name data:data type:type];
 }
 
-
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
 - (instancetype)initWithName:(NSString*)name text:(NSString*)text type:(SXCXcodeFileType)type

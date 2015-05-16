@@ -12,8 +12,8 @@
 #import <Foundation/Foundation.h>
 
 @class SXCProject;
-@class SXCSourceFile;
 @class SXCProjectBuildConfig;
+@class SXCSourceFile;
 
 /**
 * Represents a target in an xcode project.

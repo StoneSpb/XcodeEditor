@@ -16,8 +16,7 @@
 @synthesize filePath = _filePath;
 @synthesize copyToDestination = _copyToDestination;
 
-
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Class Methods
 
 + (instancetype)frameworkDefinitionWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination
@@ -25,8 +24,7 @@
     return [[self alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
 }
 
-
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
 - (instancetype)initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination
@@ -40,8 +38,7 @@
     return self;
 }
 
-
-/* ====================================================================================================================================== */
+/* ================================================================================================================== */
 #pragma mark - Interface Methods
 
 - (NSString*)name

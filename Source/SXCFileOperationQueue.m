@@ -22,9 +22,7 @@
 
 @end
 
-
 @implementation SXCFileOperationQueue
-
 
 /* ================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -42,7 +40,6 @@
     }
     return self;
 }
-
 
 /* ================================================================================================================== */
 #pragma mark - Interface Methods
@@ -92,7 +89,6 @@
     [self performFileDeletions];
     [self performCreateDirectories];
 }
-
 
 /* ================================================================================================================== */
 #pragma mark - Private Methods

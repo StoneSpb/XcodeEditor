@@ -11,8 +11,8 @@
 
 #import "SXCSubProjectDefinition.h"
 
-#import "SXCProject.h"
 #import "SXCProject+SubProject.h"
+#import "SXCProject.h"
 
 @interface SXCSubProjectDefinition ()
 
@@ -31,7 +31,6 @@
 @synthesize key = _key;
 @synthesize fullProjectPath = _fullProjectPath;
 
-
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
 //-------------------------------------------------------------------------------------------
@@ -42,7 +41,6 @@
 {
     return [[self alloc] initWithName:name path:path parentProject:parentProject];
 }
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -156,7 +154,6 @@
     }
     return [_relativePath copy];
 }
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Utility Methods

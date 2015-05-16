@@ -35,4 +35,3 @@ NSString* SXCNSStringFromSXCXcodeFileType(SXCXcodeFileType type);
 SXCXcodeFileType SXCXcodeFileTypeFromStringRepresentation(NSString* string);
 
 SXCXcodeFileType SXCXcodeFileTypeFromFileName(NSString* fileName);
-
